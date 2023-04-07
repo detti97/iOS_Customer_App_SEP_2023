@@ -44,9 +44,7 @@ struct AddressListView: View {
             }
             .navigationBarTitle("Adressen")
             .navigationBarItems(trailing: EditButton())
-            .sheet(isPresented: $showingAddAddressSheet, content: {
-                addressFormView(addressBook: addressBook)
-            })
+            
         }
     }
     
@@ -58,7 +56,7 @@ struct AddressListView: View {
 struct AddressListView_Previews: PreviewProvider {
     static var previews: some View {
         let book = AddressBook()
-        book.addAddress(address(name: "Dettler", surName: "Jan", street: "Kaiserstr.", streetNr: "12", plz: "49809"))
+        book.addAddress(address(name: "Test", surName: "Jan", street: "Teststr.", streetNr: "12", plz: "49809"))
         return AddressListView(addressBook: book)
     }
 }

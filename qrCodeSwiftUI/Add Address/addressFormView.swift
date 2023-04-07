@@ -53,6 +53,7 @@ struct addressFormView: View {
     @State private var showSuccessAlert = false
     @ObservedObject var addressBook: AddressBook
     
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationView {
@@ -97,10 +98,18 @@ struct addressFormView: View {
                 .disabled(name.isEmpty || street.isEmpty || streetNr.isEmpty || plz.isEmpty)
             }
             .navigationBarTitle("Neue Adresse")
+            
         }
-        .alert(isPresented: $showSuccessAlert) {
-            Alert(title: Text("Adresse gespeichert"), message: nil, dismissButton: .default(Text("OK")))
-        }
+        .alert(isPresented: $showSuccessAlert, content: {
+            Alert(
+                title: Text("Adresse gespeichert"),
+                message: nil,
+                dismissButton: .default(
+                    Text("OK"),
+                    action: { dismiss() }
+                )
+            )
+        })
     }
 }
 

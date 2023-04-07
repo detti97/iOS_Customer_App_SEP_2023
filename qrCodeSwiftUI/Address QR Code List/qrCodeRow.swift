@@ -19,7 +19,7 @@ struct qrCodeRow: View {
         HStack{
             
             Image(systemName: "qrcode.viewfinder")
-                .font(.system(size: 60))
+                .font(.system(size: 80))
                 .foregroundColor(.blue)
             Spacer()
             Text(adressString)
