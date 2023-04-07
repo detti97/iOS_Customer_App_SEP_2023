@@ -1,0 +1,39 @@
+//
+//  CustomTextFieldStyle.swift
+//  qrCodeSwiftUI
+//
+//  Created by Jan Dettler on 06.04.23.
+//
+
+import SwiftUI
+
+struct CustomTextFieldStyle: TextFieldStyle {
+    var systemImageName: String
+    
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        HStack {
+            Image(systemName: systemImageName)
+                .foregroundColor(.secondary)
+            configuration
+                .padding(.horizontal, 20)
+                
+        }
+    }
+}
+
+struct CustomTextFieldStyle_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            TextField("Name", text: .constant(""))
+                .textFieldStyle(CustomTextFieldStyle(systemImageName: "person"))
+            
+            TextField("Passwort", text: .constant(""))
+                .textFieldStyle(CustomTextFieldStyle(systemImageName: "lock"))
+            
+            TextField("Passwort", text: .constant(""))
+                .textFieldStyle(CustomTextFieldStyle(systemImageName: "lock"))
+        }
+        .padding()
+        .previewLayout(.sizeThatFits)
+    }
+}
