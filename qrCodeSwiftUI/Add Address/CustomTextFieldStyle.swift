@@ -31,7 +31,7 @@ struct CustomTextFieldStyle_Previews: PreviewProvider {
                 .textFieldStyle(CustomTextFieldStyle(systemImageName: "lock"))
             
             TextField("Passwort", text: .constant(""))
-                .textFieldStyle(CustomTextFieldStyle(systemImageName: "lock"))
+                .textFieldStyle(CustomTextFieldStyle(systemImageName: "qrcode"))
         }
         .padding()
         .previewLayout(.sizeThatFits)

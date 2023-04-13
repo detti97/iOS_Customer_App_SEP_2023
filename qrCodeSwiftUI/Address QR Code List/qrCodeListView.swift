@@ -17,7 +17,7 @@ struct qrCodeListView: View {
         NavigationView{
             List{
                 qrCodeRow(adressString: adressString)
-                NavigationLink(destination: qrCodeView(addressString: adressString)) { // addressString an qrCodeView übergeben
+                NavigationLink(destination: qrCodeView(addressString: adressString)) {
                     Text("QR Code anzeigen")
                 }
             }
