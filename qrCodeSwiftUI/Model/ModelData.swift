@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-var stores: [StoreInfo] = load("https://raw.githubusercontent.com/detti97/SEP_2023_iOS_Customer/main/store.json")
+var stores: [StoreInfo] = load("http://131.173.65.77:3000/store-details")
 
 func load<T: Decodable>(_ url: String) -> T {
     guard let url = URL(string: url) else {

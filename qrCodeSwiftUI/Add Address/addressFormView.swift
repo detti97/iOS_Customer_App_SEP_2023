@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct address: Identifiable {
+struct recipient: Identifiable {
     var id = UUID()
-    var name: String
-    var surName: String
+    var lastName: String
+    var firstName: String
     var street: String
     var streetNr: String
     var plz: String
     var label: String?
     
     func toString() -> String {
-            var result = "\n\(surName) \(name) \n"
+            var result = "\n\(firstName) \(lastName) \n"
             result += "\(street) \(streetNr)\n"
             
             if let label = label {
@@ -26,15 +26,15 @@ struct address: Identifiable {
             return result
         }
     func toStringQrString() -> String {
-        let result = "\(surName)&\(name)&\(street)&\(streetNr)&\(plz)"
+        let result = "\(firstName)&\(lastName)&\(street)&\(streetNr)&\(plz)"
             return result
         }
 }
 
 class AddressBook: ObservableObject {
-   @Published var addresses: [address] = []
+   @Published var addresses: [recipient] = []
     
-     func addAddress(_ address: address) {
+     func addAddress(_ address: recipient) {
         addresses.append(address)
     }
 }
@@ -58,7 +58,7 @@ struct addressFormView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Ihre Adresse")) {
+                Section(header: Text("Adresse")) {
                     TextField("Vorname", text: $surName)
                         .textFieldStyle(CustomTextFieldStyle(systemImageName: "person"))
                     TextField("Nachname", text: $name)
@@ -79,7 +79,7 @@ struct addressFormView: View {
                     
                 }
                 Button(action: {
-                    let address = address(name: name, surName: surName, street: street, streetNr: streetNr, plz: plz, label: label.isEmpty ? nil : label)
+                    let address = recipient(lastName: name, firstName: surName, street: street, streetNr: streetNr, plz: plz, label: label.isEmpty ? nil : label)
                     addressBook.addAddress(address)
                     
                     showSuccessAlert = true

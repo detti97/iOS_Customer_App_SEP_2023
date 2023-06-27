@@ -9,12 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var name = " "
     @State var addressBook = AddressBook()
     
     
     var body: some View {
-        TabView {
+        TabView { //
             AddressListView(addressBook: addressBook)
                 .tabItem {
                     Label("Lingen Code", systemImage: "qrcode")
