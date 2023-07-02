@@ -11,40 +11,39 @@ class DataManager: ObservableObject {
 	@Published var errorLoading = false
 	@Published var stores: [StoreInfo] = []
 
-	init() {
-		loadData()
-	}
-
 	func loadData() {
-		do {
-			stores = try load("http://131.173.65.77:3000/store-details")
-			errorLoading = false
-		} catch {
-			print("Fehler beim Laden der Daten: \(error)")
-			errorLoading = true
+		guard let url = URL(string: "http://131.173.65.77:3000/store-details") else {
+			return
 		}
+
+		URLSession.shared.dataTask(with: url) { data, response, error in
+			if let error = error {
+				DispatchQueue.main.async {
+					self.errorLoading = true
+					print("Fehler beim Laden der Daten: \(error)")
+				}
+				return
+			}
+
+			if let data = data {
+				do {
+					let decoder = JSONDecoder()
+					let loadedData = try decoder.decode([StoreInfo].self, from: data)
+
+					DispatchQueue.main.async {
+						self.stores = loadedData
+						self.errorLoading = false
+					}
+				} catch {
+					DispatchQueue.main.async {
+						self.errorLoading = true
+						print("Fehler beim Laden der Daten: \(error)")
+					}
+				}
+			}
+		}.resume()
 	}
 
-	func load<T: Decodable>(_ url: String) throws -> T {
-		guard let url = URL(string: url) else {
-			throw NSError(domain: "InvalidURL", code: 0, userInfo: nil)
-		}
-
-		let data: Data
-
-		do {
-			data = try Data(contentsOf: url)
-		} catch {
-			throw error
-		}
-
-		do {
-			let decoder = JSONDecoder()
-			return try decoder.decode(T.self, from: data)
-		} catch {
-			throw error
-		}
-	}
 }
 
 
