@@ -31,13 +31,17 @@ struct StoreRow: View {
 }
 
 struct StoreRow_Previews: PreviewProvider {
-    static var previews: some View {
-        Group{
-            StoreRow(store: stores[1])
-            StoreRow(store: stores[0])
-        }
-        .previewLayout(.fixed(width: 300, height: 70))
-    }
+	static var previews: some View {
+		let dataManager = DataManager() // DataManager-Instanz erstellen
+		let store = dataManager.stores[1] // Beispielhafter Store
+
+		return Group {
+			StoreRow(store: store)
+		}
+		.previewLayout(.fixed(width: 300, height: 70))
+		.environmentObject(dataManager) // dataManager als Environment-Objekt setzen
+	}
 }
+
 
 

@@ -8,23 +8,40 @@
 import SwiftUI
 
 struct StoreList: View {
-    var body: some View {
-        NavigationView{
-            List(stores) { store in
-                NavigationLink{
-                    StoreDetail(store: store)
-                } label: {
-                    StoreRow(store: store)
-                }
-            }
-            .navigationTitle("Teilnehmende Geschäfte")
-        }
-    }
+
+	@StateObject public var dataManager = DataManager()
+	@State private var showErrorAlert = false
+
+	var body: some View {
+
+			NavigationView{
+
+				List(dataManager.stores) { store in
+					NavigationLink{
+						StoreDetail(store: store)
+					} label: {
+						StoreRow(store: store)
+					}
+				}
+				.navigationTitle("Teilnehmende Geschäfte")
+				.refreshable {
+					print("reload")
+					dataManager.loadData()
+						   }
+			}
+
+			if dataManager.errorLoading {
+				Text("Fehler beim Laden der Daten")
+					.foregroundColor(.red)
+			}
+
+		}
+	
 }
 
 struct StoreList_Previews: PreviewProvider {
-    static var previews: some View {
-        StoreList()
-    }
+	static var previews: some View {
+		StoreList()
+	}
 }
 
