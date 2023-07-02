@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct recipient: Identifiable {
+struct recipient: Identifiable, Codable {
     var id = UUID()
     var lastName: String
     var firstName: String
@@ -32,12 +32,44 @@ struct recipient: Identifiable {
 }
 
 class AddressBook: ObservableObject {
-   @Published var addresses: [recipient] = []
-    
-     func addAddress(_ address: recipient) {
-        addresses.append(address)
-    }
+	@Published var addresses: [recipient] = []
+
+	init() {
+		loadData()
+	}
+
+	func addAddress(_ address: recipient) {
+		addresses.append(address)
+		saveData()
+	}
+
+	func deleteAddress(at indexSet: IndexSet) {
+		addresses.remove(atOffsets: indexSet)
+		saveData()
+	}
+
+	func loadData() {
+		if let data = UserDefaults.standard.data(forKey: "addressBook") {
+			do {
+				let decoder = JSONDecoder()
+				addresses = try decoder.decode([recipient].self, from: data)
+			} catch {
+				print("Error loading data: \(error)")
+			}
+		}
+	}
+
+	func saveData() {
+		do {
+			let encoder = JSONEncoder()
+			let data = try encoder.encode(addresses)
+			UserDefaults.standard.set(data, forKey: "addressBook")
+		} catch {
+			print("Error saving data: \(error)")
+		}
+	}
 }
+
 
 struct addressFormView: View {
     
