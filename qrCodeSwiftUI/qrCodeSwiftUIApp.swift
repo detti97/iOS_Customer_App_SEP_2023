@@ -12,6 +12,7 @@ struct qrCodeSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+				.environmentObject(DataManager())
         }
     }
 }

@@ -16,24 +16,36 @@ struct StoreList: View {
 
 			NavigationView{
 
-				List(dataManager.stores) { store in
-					NavigationLink{
-						StoreDetail(store: store)
-					} label: {
-						StoreRow(store: store)
+				if dataManager.errorLoading {
+					List{
+						Text("Fehler beim Laden der Daten")
+							.foregroundColor(.red)
+						Text("Nach unten ziehen um es erneut zu versuchen")
 					}
-				}
-				.navigationTitle("Teilnehmende Geschäfte")
-				.refreshable {
-					print("reload")
-					dataManager.loadData()
-						   }
-			}
+					.navigationTitle("Teilnehmende Geschäfte")
+					.refreshable {
+						print("reload")
+						dataManager.loadData()
+							   }
+				}else{
 
-			if dataManager.errorLoading {
-				Text("Fehler beim Laden der Daten")
-					.foregroundColor(.red)
+					List(dataManager.stores) { store in
+						NavigationLink{
+							StoreDetail(store: store)
+						} label: {
+							StoreRow(store: store)
+						}
+					}
+					.navigationTitle("Teilnehmende Geschäfte")
+					.refreshable {
+						print("reload")
+						dataManager.loadData()
+							   }
+				}
 			}
+			.onAppear(perform: {
+				dataManager.loadData()
+			})
 
 		}
 	

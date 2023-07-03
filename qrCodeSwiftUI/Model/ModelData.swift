@@ -20,7 +20,7 @@ class DataManager: ObservableObject {
 			if let error = error {
 				DispatchQueue.main.async {
 					self.errorLoading = true
-					print("Fehler beim Laden der Daten: \(error)")
+					print("Fehler beim Laden der Daten")
 				}
 				return
 			}
@@ -37,7 +37,7 @@ class DataManager: ObservableObject {
 				} catch {
 					DispatchQueue.main.async {
 						self.errorLoading = true
-						print("Fehler beim Laden der Daten: \(error)")
+						print("Fehler beim Laden der Daten")
 					}
 				}
 			}

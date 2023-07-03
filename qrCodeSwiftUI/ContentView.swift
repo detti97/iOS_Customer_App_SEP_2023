@@ -23,7 +23,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Erkunden", systemImage: "location")
                 }
-            addressFormView(addressBook: addressBook)
+            SettingsView()
                 .tabItem {
                     Label("Einstellungen", systemImage: "gear")
                 }

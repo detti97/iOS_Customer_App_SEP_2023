@@ -9,14 +9,16 @@ import SwiftUI
 
 struct StoreDetail: View {
 
-	@EnvironmentObject var dataManager: DataManager
+	@StateObject public var dataManager = DataManager()
     var store : StoreInfo
     
     
     var body: some View {
 
+		Text("hallo")
+
             ScrollView{
-                
+
                 VStack{
                     
 					VStack(alignment: .center) {
@@ -88,18 +90,31 @@ struct StoreDetail: View {
 								dataManager.loadData()
 							}
 
+
             }
+
 
         }
     }
 
 struct StoreDetail_Previews: PreviewProvider {
-    static var previews: some View {
-
+	static var previews: some View {
 		let dataManager = DataManager()
 
-		StoreDetail(store: dataManager.stores[0])
-    }
+		return Group {
+			if !dataManager.stores.isEmpty {
+				StoreDetail(store: dataManager.stores[0])
+					.environmentObject(dataManager)
+					.previewLayout(.sizeThatFits)
+					.padding()
+			} else {
+				Text("No stores available")
+					.padding()
+			}
+		}
+	}
 }
+
+
 
 

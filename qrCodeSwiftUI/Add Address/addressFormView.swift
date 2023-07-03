@@ -86,6 +86,13 @@ struct addressFormView: View {
     @ObservedObject var addressBook: AddressBook
     
     @Environment(\.dismiss) var dismiss
+	@Environment(\.presentationMode) private var presentationMode
+
+	@FocusState private var focusField: Field?
+
+	enum Field{
+		case surname, name, street, housenumber, zip, discription
+	}
     
     var body: some View {
         NavigationView {
@@ -93,12 +100,32 @@ struct addressFormView: View {
                 Section(header: Text("Adresse")) {
                     TextField("Vorname", text: $surName)
                         .textFieldStyle(CustomTextFieldStyle(systemImageName: "person"))
+						.focused($focusField, equals: .surname)
+						.submitLabel(.next)
+						.onSubmit {
+							focusField = .name
+						}
                     TextField("Nachname", text: $name)
                         .textFieldStyle(CustomTextFieldStyle(systemImageName: "figure.fall"))
+						.focused($focusField, equals: .name)
+						.submitLabel(.next)
+						.onSubmit {
+							focusField = .street
+						}
                     TextField("Straße", text: $street)
                         .textFieldStyle(CustomTextFieldStyle(systemImageName: "house"))
+						.focused($focusField, equals: .street)
+						.submitLabel(.next)
+						.onSubmit {
+							focusField = .housenumber
+						}
                     TextField("Hausnummer", text: $streetNr)
                         .textFieldStyle(CustomTextFieldStyle(systemImageName: "figure.skiing.downhill"))
+						.focused($focusField, equals: .housenumber)
+						.submitLabel(.next)
+						.onSubmit {
+							focusField = .zip
+						}
                     Picker("Postleitzahl", selection: $plz) {
                         ForEach(zipCodes, id: \.self) { plz in
                             Text(plz)
@@ -106,8 +133,14 @@ struct addressFormView: View {
                         
                     }
                     .pickerStyle(MenuPickerStyle())
+					.focused($focusField, equals: .zip)
                     TextField("Bezeichnung (optional)", text: $label)
                         .textFieldStyle(CustomTextFieldStyle(systemImageName: "square.and.pencil"))
+						.focused($focusField, equals: .discription)
+						.submitLabel(.next)
+						.onSubmit {
+							focusField = nil
+						}
                     
                 }
                 Button(action: {
@@ -130,6 +163,7 @@ struct addressFormView: View {
                 .disabled(name.isEmpty || street.isEmpty || streetNr.isEmpty || plz.isEmpty)
             }
             .navigationBarTitle("Neue Adresse")
+			.navigationBarItems(leading: cancelButton)
             
         }
         .alert(isPresented: $showSuccessAlert, content: {
@@ -143,6 +177,14 @@ struct addressFormView: View {
             )
         })
     }
+	private var cancelButton: some View {
+		Button(action: {
+			// Schließe die Ansicht und kehre zum Einstellungsmenü zurück
+			presentationMode.wrappedValue.dismiss()
+		}) {
+			Text("Zurück")
+		}
+	}
 }
 
 
