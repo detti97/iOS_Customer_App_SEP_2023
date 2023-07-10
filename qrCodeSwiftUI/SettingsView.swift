@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
 
 	@State var showEditAddress = false
+    @AppStorage("isDarkMode") private var isDarkMode = false
 
 
 	var body: some View {
@@ -37,6 +38,11 @@ struct SettingsView: View {
 						Text("Alle Adressen löschen")
 							.foregroundColor(Color.red)
 					}
+                    Section() {
+                        Toggle(isOn: $isDarkMode) {
+                            Text("Dark Mode")
+                        }
+                    }
 
 				}
 			}
