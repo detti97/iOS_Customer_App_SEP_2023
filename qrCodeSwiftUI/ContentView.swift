@@ -13,12 +13,11 @@ struct ContentView: View {
     
     
     var body: some View {
-        TabView { //
+        TabView {
             AddressListView(addressBook: addressBook)
                 .tabItem {
                     Label("Lingen Code", systemImage: "qrcode")
                 }
-            
             StoreList()
                 .tabItem {
                     Label("Erkunden", systemImage: "location")

@@ -13,6 +13,7 @@ class DataManager: ObservableObject {
 
 	func loadData() {
 		guard let url = URL(string: "http://131.173.65.77:3000/store-details") else {
+			print("Fehler")
 			return
 		}
 
