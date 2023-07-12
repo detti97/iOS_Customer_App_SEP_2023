@@ -11,7 +11,8 @@ struct SettingsView: View {
 
 	@State var showEditAddress = false
     @AppStorage("isDarkMode") private var isDarkMode = false
-
+	@State static var returnedBool: Bool?
+	@Binding var introState: Bool
 
 	var body: some View {
 
@@ -38,6 +39,14 @@ struct SettingsView: View {
 						Text("Alle Adressen löschen")
 							.foregroundColor(Color.red)
 					}
+					Button(action:{
+						introState = false
+						UserDefaults.standard.removeObject(forKey: "IntroState")
+
+					}){
+						Text("Intro Reset")
+							.foregroundColor(.red)
+					}
                     Section() {
                         Toggle(isOn: $isDarkMode) {
                             Text("Dark Mode")
@@ -57,7 +66,7 @@ struct SettingsView: View {
 
 	struct SettingsView_Previews: PreviewProvider {
 		static var previews: some View {
-			SettingsView()
+			SettingsView(introState: .constant(false))
 		}
 	}
 }

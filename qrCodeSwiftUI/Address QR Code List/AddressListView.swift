@@ -10,9 +10,10 @@ import SwiftUI
 struct AddressListView: View {
 	@ObservedObject var addressBook: AddressBook
 	@State private var showingAddAddressSheet = false
+	@State static var returnedBool: Bool?
 
 	var body: some View {
-		NavigationView {
+		NavigationStack {
 			VStack {
 				List {
 					ForEach(addressBook.addresses) { address in

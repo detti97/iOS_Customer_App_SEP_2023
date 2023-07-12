@@ -12,6 +12,8 @@ struct qrCodeListView: View {
     
     @State var adressString: String = ""
     @State var showFormView = false
+
+	@State static var returnedBool: Bool?
     
     var body: some View {
         NavigationView{
@@ -33,7 +35,7 @@ struct qrCodeListView: View {
                 }
             )
             .sheet(isPresented: $showFormView){
-                addressFormView(addressBook: AddressBook())
+				addressFormView(addressBook: AddressBook())
             }
             
         }

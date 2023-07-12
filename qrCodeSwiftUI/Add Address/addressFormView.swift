@@ -90,6 +90,8 @@ struct addressFormView: View {
 
 	@FocusState private var focusField: Field?
 
+	@EnvironmentObject var appState: AppState
+
 	enum Field{
 		case surname, name, street, housenumber, zip, discription
 	}
@@ -148,12 +150,15 @@ struct addressFormView: View {
                     addressBook.addAddress(address)
                     
                     showSuccessAlert = true
+					appState.addressEntered = true
                     name = ""
                     surName = ""
                     street = ""
                     streetNr = ""
                     plz = ""
                     label = ""
+					print(appState.addressEntered)
+
                 }) {
                     HStack{
                         Image(systemName: "square.and.arrow.down.fill")
@@ -172,7 +177,8 @@ struct addressFormView: View {
                 message: nil,
                 dismissButton: .default(
                     Text("OK"),
-                    action: { dismiss() }
+                    action: { dismiss()
+					}
                 )
             )
         })
@@ -189,6 +195,7 @@ struct addressFormView: View {
 
 
 struct addressFormView_Previews: PreviewProvider {
+
     static var previews: some View {
         addressFormView(addressBook: AddressBook())
     }

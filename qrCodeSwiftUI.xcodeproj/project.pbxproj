@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		600B17682A5D6E2200CA28BE /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B17672A5D6E2200CA28BE /* IntroView.swift */; };
 		6035373729DA287F008C7881 /* qrCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6035373629DA287F008C7881 /* qrCodeView.swift */; };
 		6073C2CB2A52123D002C9CDB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073C2CA2A52123D002C9CDB /* SettingsView.swift */; };
 		607E6A4A29D8EF3700A12B32 /* qrCodeSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E6A4929D8EF3700A12B32 /* qrCodeSwiftUIApp.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		600B17672A5D6E2200CA28BE /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		6035373629DA287F008C7881 /* qrCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrCodeView.swift; sourceTree = "<group>"; };
 		6073C2CA2A52123D002C9CDB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		607E6A4629D8EF3700A12B32 /* qrCodeSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qrCodeSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		600B17662A5D6E1100CA28BE /* IntroView */ = {
+			isa = PBXGroup;
+			children = (
+				600B17672A5D6E2200CA28BE /* IntroView.swift */,
+			);
+			path = IntroView;
+			sourceTree = "<group>";
+		};
 		6042879829E0574F009798B5 /* Address QR Code List */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +109,7 @@
 		607E6A4829D8EF3700A12B32 /* qrCodeSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				600B17662A5D6E1100CA28BE /* IntroView */,
 				607E6A4929D8EF3700A12B32 /* qrCodeSwiftUIApp.swift */,
 				6073C2CA2A52123D002C9CDB /* SettingsView.swift */,
 				607E6A4B29D8EF3700A12B32 /* ContentView.swift */,
@@ -224,6 +235,7 @@
 				607E6A4C29D8EF3700A12B32 /* ContentView.swift in Sources */,
 				60991C3629DE372F003F148B /* qrCodeListView.swift in Sources */,
 				60991C4E29DF7B6C003F148B /* StoreList.swift in Sources */,
+				600B17682A5D6E2200CA28BE /* IntroView.swift in Sources */,
 				60991C5029DF7C06003F148B /* StoreDetail.swift in Sources */,
 				60991C3A29DED400003F148B /* addressFormView.swift in Sources */,
 				607E6A4A29D8EF3700A12B32 /* qrCodeSwiftUIApp.swift in Sources */,

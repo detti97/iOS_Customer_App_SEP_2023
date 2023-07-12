@@ -47,5 +47,9 @@ class DataManager: ObservableObject {
 
 }
 
+class AppState: ObservableObject {
+	@Published var addressEntered = false
+}
+
 
 
