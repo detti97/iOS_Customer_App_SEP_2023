@@ -16,9 +16,10 @@ struct ContentView: View {
 
     var body: some View {
 
+
 		Group{
 
-			if introshown == false && getIntroState() == false {
+			if !introshown && !getIntroState() {
 
 				IntroView(introState: $introshown, addressBook: addressBook)
 
@@ -38,10 +39,6 @@ struct ContentView: View {
 							.tabItem {
 								Label("Einstellungen", systemImage: "gear")
 							}
-						IntroView(introState: $introshown, addressBook: addressBook)
-							.tabItem{
-								Label("Intro", systemImage: "house")
-							}
 					}
 					.onAppear {
 						if addressBook.addresses.isEmpty {
@@ -57,8 +54,6 @@ struct ContentView: View {
 					)
 				}
 
-
-
 			}
 
 		}
@@ -69,7 +64,6 @@ struct ContentView: View {
 
 		let state = UserDefaults.standard.bool(forKey: "IntroState")
 		let myOptional: Bool? = nil
-		print(state)
 		if state == myOptional {
 			return false
 		}else{

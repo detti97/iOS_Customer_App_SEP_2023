@@ -9,13 +9,10 @@ import SwiftUI
 
 struct StoreDetail: View {
 
-	@StateObject public var dataManager = DataManager()
+	//@StateObject public var dataManager = DataManager()
     var store : StoreInfo
-    
-    
-    var body: some View {
 
-		Text("hallo")
+    var body: some View {
 
             ScrollView{
 
@@ -85,10 +82,10 @@ struct StoreDetail: View {
 
                 }
                 .navigationTitle(store.name)
-				.refreshable {
+				/*.refreshable {
 								// Daten neu laden
 								dataManager.loadData()
-							}
+							}*/
 
 
             }
@@ -99,19 +96,15 @@ struct StoreDetail: View {
 
 struct StoreDetail_Previews: PreviewProvider {
 	static var previews: some View {
-		let dataManager = DataManager()
+		Group{
 
-		return Group {
-			if !dataManager.stores.isEmpty {
-				StoreDetail(store: dataManager.stores[0])
-					.environmentObject(dataManager)
-					.previewLayout(.sizeThatFits)
-					.padding()
-			} else {
-				Text("No stores available")
-					.padding()
-			}
+			let store = StoreInfo(id: "1", name: "Apple Store", owner: "Steve Jobs", street: "Kaiserstraße", houseNumber: "12", zip: "12345", city: "Lingen", telephone: "0123456789", email: "test@osna.de", logo: "https://img.freepik.com/freie-ikonen/mac-os_318-10374.jpg", coordinates: StoreInfo.Coordinates(latitude: 37.7749, longitude: -122.4194))
+
+
+			StoreDetail(store: store)
 		}
+
+
 	}
 }
 

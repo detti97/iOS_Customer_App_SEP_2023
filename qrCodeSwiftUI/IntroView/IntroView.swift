@@ -11,8 +11,8 @@ struct IntroView: View {
 	@Binding var introState: Bool
 	@ObservedObject var addressBook: AddressBook
 
-	@State private var isActiveFirstStep = true
-	@State private var isActiveSeccondStep = false
+	@State private var isActiveFirstStep = false
+	@State private var isActiveSeccondStep = true
 	@State private var isActiveThirdStep = false
 	@State private var isActiveAddAddress = false
 	let zipCodes = ["49808", "49809" , "49811"]
