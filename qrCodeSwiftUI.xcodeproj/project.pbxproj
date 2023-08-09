@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5264A2FF2A838EBB00EE3258 /* qrCodeSwiftUNIT_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5264A2FE2A838EBB00EE3258 /* qrCodeSwiftUNIT_Tests.swift */; };
 		600B17682A5D6E2200CA28BE /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B17672A5D6E2200CA28BE /* IntroView.swift */; };
 		6035373729DA287F008C7881 /* qrCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6035373629DA287F008C7881 /* qrCodeView.swift */; };
 		6073C2CB2A52123D002C9CDB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073C2CA2A52123D002C9CDB /* SettingsView.swift */; };
@@ -29,7 +30,19 @@
 		60991C5029DF7C06003F148B /* StoreDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C4F29DF7C06003F148B /* StoreDetail.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5264A3002A838EBB00EE3258 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607E6A3E29D8EF3700A12B32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 607E6A4529D8EF3700A12B32;
+			remoteInfo = qrCodeSwiftUI;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		5264A2FC2A838EBB00EE3258 /* qrCodeSwiftUNIT-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "qrCodeSwiftUNIT-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5264A2FE2A838EBB00EE3258 /* qrCodeSwiftUNIT_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrCodeSwiftUNIT_Tests.swift; sourceTree = "<group>"; };
 		600B17672A5D6E2200CA28BE /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		6035373629DA287F008C7881 /* qrCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrCodeView.swift; sourceTree = "<group>"; };
 		6073C2CA2A52123D002C9CDB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -54,6 +67,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5264A2F92A838EBB00EE3258 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607E6A4329D8EF3700A12B32 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -64,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5264A2FD2A838EBB00EE3258 /* qrCodeSwiftUNIT-Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5264A2FE2A838EBB00EE3258 /* qrCodeSwiftUNIT_Tests.swift */,
+			);
+			path = "qrCodeSwiftUNIT-Tests";
+			sourceTree = "<group>";
+		};
 		600B17662A5D6E1100CA28BE /* IntroView */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				607E6A4829D8EF3700A12B32 /* qrCodeSwiftUI */,
+				5264A2FD2A838EBB00EE3258 /* qrCodeSwiftUNIT-Tests */,
 				607E6A4729D8EF3700A12B32 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				607E6A4629D8EF3700A12B32 /* qrCodeSwiftUI.app */,
+				5264A2FC2A838EBB00EE3258 /* qrCodeSwiftUNIT-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,6 +188,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5264A2FB2A838EBB00EE3258 /* qrCodeSwiftUNIT-Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5264A3042A838EBC00EE3258 /* Build configuration list for PBXNativeTarget "qrCodeSwiftUNIT-Tests" */;
+			buildPhases = (
+				5264A2F82A838EBB00EE3258 /* Sources */,
+				5264A2F92A838EBB00EE3258 /* Frameworks */,
+				5264A2FA2A838EBB00EE3258 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5264A3012A838EBB00EE3258 /* PBXTargetDependency */,
+			);
+			name = "qrCodeSwiftUNIT-Tests";
+			productName = "qrCodeSwiftUNIT-Tests";
+			productReference = 5264A2FC2A838EBB00EE3258 /* qrCodeSwiftUNIT-Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		607E6A4529D8EF3700A12B32 /* qrCodeSwiftUI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607E6A5429D8EF3800A12B32 /* Build configuration list for PBXNativeTarget "qrCodeSwiftUI" */;
@@ -182,9 +230,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					5264A2FB2A838EBB00EE3258 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 607E6A4529D8EF3700A12B32;
+					};
 					607E6A4529D8EF3700A12B32 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -204,11 +256,19 @@
 			projectRoot = "";
 			targets = (
 				607E6A4529D8EF3700A12B32 /* qrCodeSwiftUI */,
+				5264A2FB2A838EBB00EE3258 /* qrCodeSwiftUNIT-Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5264A2FA2A838EBB00EE3258 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607E6A4429D8EF3700A12B32 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -221,6 +281,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5264A2F82A838EBB00EE3258 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5264A2FF2A838EBB00EE3258 /* qrCodeSwiftUNIT_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607E6A4229D8EF3700A12B32 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -248,7 +316,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5264A3012A838EBB00EE3258 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 607E6A4529D8EF3700A12B32 /* qrCodeSwiftUI */;
+			targetProxy = 5264A3002A838EBB00EE3258 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5264A3022A838EBB00EE3258 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Tests.qrCodeSwiftUNIT-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qrCodeSwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/qrCodeSwiftUI";
+			};
+			name = Debug;
+		};
+		5264A3032A838EBB00EE3258 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Tests.qrCodeSwiftUNIT-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qrCodeSwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/qrCodeSwiftUI";
+			};
+			name = Release;
+		};
 		607E6A5229D8EF3800A12B32 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -434,6 +546,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5264A3042A838EBC00EE3258 /* Build configuration list for PBXNativeTarget "qrCodeSwiftUNIT-Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5264A3022A838EBB00EE3258 /* Debug */,
+				5264A3032A838EBB00EE3258 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		607E6A4129D8EF3700A12B32 /* Build configuration list for PBXProject "qrCodeSwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
