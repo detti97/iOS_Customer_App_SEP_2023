@@ -88,6 +88,8 @@ class AddressFormViewTests: XCTestCase {
 
 }
 
+// StoreDetail
+
 class StoreDetailTests: XCTestCase {
     
     // Test for the telephone tap interaction in `StoreDetail`
@@ -100,4 +102,59 @@ class StoreDetailTests: XCTestCase {
         
     }
     
+}
+
+//AddressListView
+
+
+class AddressListViewTests: XCTestCase {
+    
+    var addressListView: AddressListView!
+    var mockAddressBook: AddressBook!
+    
+    override func setUp() {
+        super.setUp()
+        mockAddressBook = AddressBook()
+        addressListView = AddressListView(addressBook: mockAddressBook)
+    }
+    
+    override func tearDown() {
+        addressListView = nil
+        mockAddressBook = nil
+        super.tearDown()
+    }
+    
+    // Test to check if addresses are correctly loaded from the addressBook
+    func testLoadAddresses() {
+        let testAddress = recipient(lastName: "Doe", firstName: "John", street: "Main Street", streetNr: "123", plz: "12345")
+        mockAddressBook.addAddress(testAddress)
+        
+        
+        XCTAssertEqual(mockAddressBook.addresses.count, 3)
+        XCTAssertEqual(mockAddressBook.addresses.first?.lastName, "Doe")
+    }
+    
+    // Test to check the functionality of the delete method
+    func testDeleteAddress() {
+        let testAddress = recipient(lastName: "Doe", firstName: "John", street: "Main Street", streetNr: "123", plz: "12345")
+        mockAddressBook.addAddress(testAddress)
+        
+        addressListView.delete(at: IndexSet(integer: 0))
+        
+        XCTAssertEqual(mockAddressBook.addresses.count, 0)
+    }
+    
+    // Spy class for AddressBook to check if methods are called
+    class SpyAddressBook: AddressBook {
+        var loadDataCalled = false
+        var saveDataCalled = false
+        
+        override func loadData() {
+            loadDataCalled = true
+        }
+        
+        override func saveData() {
+            saveDataCalled = true
+        }
+    }
 }
