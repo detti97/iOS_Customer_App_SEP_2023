@@ -11,7 +11,7 @@ import CoreLocation
 
 
 struct StoreInfo: Identifiable, Codable, Hashable {
-    
+
     var id: String
     var name: String
     var owner: String
@@ -27,14 +27,14 @@ struct StoreInfo: Identifiable, Codable, Hashable {
     
     var locationCoordinate: CLLocationCoordinate2D {
             CLLocationCoordinate2D(
-                latitude: coordinates.latitude,
-                longitude: coordinates.longitude)
+				latitude: coordinates.latitude, longitude: coordinates.longitude)
         }
     
 
         struct Coordinates: Hashable, Codable {
-            var latitude: Double
-            var longitude: Double
+
+			var latitude: Double
+			var longitude: Double
         }
 
 	init(id: String, name: String, owner: String, street: String, houseNumber: String, zip: String, city: String, telephone: String, email: String, logo: String, coordinates: Coordinates) {

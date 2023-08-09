@@ -10,89 +10,111 @@ import SwiftUI
 struct StoreDetail: View {
 
 	//@StateObject public var dataManager = DataManager()
-    var store : StoreInfo
+	var store : StoreInfo
+	var body: some View {
 
-    var body: some View {
+		ScrollView{
 
-            ScrollView{
+			VStack{
 
-                VStack{
-                    
-					VStack(alignment: .center) {
-
-						Spacer()
-							.frame(height: 20)
-                        
-                        AsyncImage(url: URL(string: store.logo)) { image in
-                            image.resizable()
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .frame(width: 150, height: 150)
-                        .clipShape(Circle())
-                        .overlay {
-                            Circle().stroke(.white, lineWidth: 4)
-                        }
-                        .shadow(radius: 6)
-                        
-                        Text(store.name)
-                            .font(.title)
-                            .padding(.top)
-						Spacer()
-							.frame(width: 20)
-						HStack{
-
-							VStack{
-								Image(systemName: "person")
-									.font(.headline)
-								Image(systemName: "house")
-									.font(.headline)
-								Image(systemName: "phone")
-									.font(.headline)
-								Image(systemName: "envelope")
-									.font(.headline)
-
-							}
-
-							VStack{
-								Text(store.owner)
-								Text("\(store.street) \(store.houseNumber)")
-								Text(store.telephone)
-										.onTapGesture {
-											guard let url = URL(string: "tel:\(store.telephone)") else { return }
-											UIApplication.shared.open(url)
-										}
-								Text(store.email)
-							}
-
-
-						}
-						.padding()
-						.background()
-						.cornerRadius(10)
-						.shadow(radius: 6)
-
-                    }
+				VStack(alignment: .center) {
 
 					Spacer()
-					.frame(width: 30)
-								MapView(coordinate: store.locationCoordinate, storeName: store.name)
-									.ignoresSafeArea()
-									.frame(width: 400, height: 400)
+						.frame(height: 20)
 
-                }
-                .navigationTitle(store.name)
-				/*.refreshable {
-								// Daten neu laden
-								dataManager.loadData()
-							}*/
+					AsyncImage(url: URL(string: store.logo)) { image in
+						image.resizable()
+					} placeholder: {
+						ProgressView()
+					}
+					.frame(width: 150, height: 150)
+					.clipShape(Circle())
+					.overlay {
+						Circle().stroke(.white, lineWidth: 4)
+					}
+					.shadow(radius: 6)
+
+					Text(store.name)
+						.font(.largeTitle)
+
+						.padding(.top)
+						.fontWeight(.heavy)
+						.foregroundColor(.white)
+
+					Spacer(minLength: 30)
+
+					HStack{
+
+						VStack{
+							Image(systemName: "person")
+								.font(.headline)
+							Image(systemName: "house")
+								.font(.headline)
+							Image(systemName: "phone")
+								.font(.headline)
+							Image(systemName: "envelope")
+								.font(.headline)
+
+						}
+
+						VStack{
+							Text(store.owner)
+							Text("\(store.street) \(store.houseNumber)")
+							Text(store.telephone)
+								.onTapGesture {
+									guard let url = URL(string: "tel:\(store.telephone)") else { return }
+									UIApplication.shared.open(url)
+								}
+							Text(store.email)
+						}
 
 
-            }
+					}
+					.padding()
+					.background(
+						Color.white
+							.opacity(0.6)
+							.cornerRadius(15)
+							.shadow(radius: 6)
+
+					)
 
 
-        }
-    }
+					Spacer(minLength: 25)
+
+				}
+				.background(
+					AsyncImage(url: URL(string: "https://wallpapers.com/wp-content/themes/wallpapers.com/src/splash-n.jpg")) { image in
+						image.resizable()
+							.aspectRatio(contentMode: .fill)
+							.edgesIgnoringSafeArea(.all)
+							.opacity(0.6)
+					} placeholder: {
+						Color.clear
+					})
+				//Spacer(minLength: 40)
+
+				VStack{
+
+					MapView(coordinate: store.locationCoordinate, storeName: store.name)
+						.ignoresSafeArea()
+						.frame(width: 400, height: 300)
+
+				}
+
+
+
+			}
+			.navigationTitle(store.name)
+			.navigationBarTitleDisplayMode(.inline)
+
+
+
+		}
+
+
+	}
+}
 
 struct StoreDetail_Previews: PreviewProvider {
 	static var previews: some View {

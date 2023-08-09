@@ -12,7 +12,7 @@ class DataManager: ObservableObject {
 	@Published var stores: [StoreInfo] = []
 
 	func loadData() {
-		guard let url = URL(string: "http://131.173.65.77:3000/store-details") else {
+		guard let url = URL(string: "http://131.173.65.77:8080/store-details") else {
 			print("Fehler")
 			return
 		}
@@ -38,7 +38,7 @@ class DataManager: ObservableObject {
 				} catch {
 					DispatchQueue.main.async {
 						self.errorLoading = true
-						print("Fehler beim Laden der Daten")
+						print("Fehler beim decodiern der Daten")
 					}
 				}
 			}
