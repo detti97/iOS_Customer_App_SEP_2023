@@ -22,6 +22,7 @@ struct StoreInfo: Identifiable, Codable, Hashable {
     var telephone: String
     var email: String
     var logo: String
+	var backgroundImage: String
     
     private var coordinates: Coordinates
     
@@ -37,7 +38,7 @@ struct StoreInfo: Identifiable, Codable, Hashable {
 			var longitude: Double
         }
 
-	init(id: String, name: String, owner: String, street: String, houseNumber: String, zip: String, city: String, telephone: String, email: String, logo: String, coordinates: Coordinates) {
+	init(id: String, name: String, owner: String, street: String, houseNumber: String, zip: String, city: String, telephone: String, email: String, logo: String, backgroundImage: String, coordinates: Coordinates) {
 			self.id = id
 			self.name = name
 			self.owner = owner
@@ -48,6 +49,7 @@ struct StoreInfo: Identifiable, Codable, Hashable {
 			self.telephone = telephone
 			self.email = email
 			self.logo = logo
+			self.backgroundImage = backgroundImage
 			self.coordinates = coordinates
 		}
 

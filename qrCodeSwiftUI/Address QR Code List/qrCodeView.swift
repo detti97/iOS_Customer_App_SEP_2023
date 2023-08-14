@@ -20,13 +20,7 @@ struct qrCodeView: View {
         
         
         VStack{
-            /*Circle()
-             .fill(.blue)
-             .shadow(radius: 30)
-             .frame(width: 900, height: 500)
-             .opacity(0.4)
-             .offset(y: 100)
-             */
+
             Image("Logo_klein")
                 .resizable()
                 .frame(width: 210, height: 120)
@@ -48,7 +42,7 @@ struct qrCodeView: View {
                     .border(Color.white, width: 5)
                     .cornerRadius(10)
                     .shadow(radius: 50)
-                    //.background(.ultraThinMaterial)
+                    .background(.ultraThinMaterial)
                     .offset(y: -260)
             }
         }

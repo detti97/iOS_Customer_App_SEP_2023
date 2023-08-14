@@ -10,6 +10,7 @@ import SwiftUI
 struct StoreDetail: View {
 
 	//@StateObject public var dataManager = DataManager()
+	@ObservedObject var dataManager: DataManager
 	var store : StoreInfo
 	var body: some View {
 
@@ -45,19 +46,15 @@ struct StoreDetail: View {
 
 					HStack{
 
-						VStack{
+						VStack(spacing: 4){
 							Image(systemName: "person")
-								.font(.headline)
 							Image(systemName: "house")
-								.font(.headline)
 							Image(systemName: "phone")
-								.font(.headline)
 							Image(systemName: "envelope")
-								.font(.headline)
-
 						}
+						.fontWeight(.heavy)
 
-						VStack{
+						VStack(alignment: .trailing, spacing: 4){
 							Text(store.owner)
 							Text("\(store.street) \(store.houseNumber)")
 							Text(store.telephone)
@@ -67,9 +64,12 @@ struct StoreDetail: View {
 								}
 							Text(store.email)
 						}
+						.fontWeight(.heavy)
 
 
 					}
+					.frame(width: 250, height: 100)
+					.font(Font.system(size: 20))
 					.padding()
 					.background(
 						Color.white
@@ -79,20 +79,19 @@ struct StoreDetail: View {
 
 					)
 
-
 					Spacer(minLength: 25)
 
 				}
 				.background(
-					AsyncImage(url: URL(string: "https://wallpapers.com/wp-content/themes/wallpapers.com/src/splash-n.jpg")) { image in
+					AsyncImage(url: URL(string: store.backgroundImage)) { image in
 						image.resizable()
 							.aspectRatio(contentMode: .fill)
 							.edgesIgnoringSafeArea(.all)
-							.opacity(0.6)
+							.opacity(0.7)
 					} placeholder: {
 						Color.clear
 					})
-				//Spacer(minLength: 40)
+
 
 				VStack{
 
@@ -109,8 +108,11 @@ struct StoreDetail: View {
 			.navigationBarTitleDisplayMode(.inline)
 
 
-
 		}
+		.refreshable {
+			print("reload")
+			dataManager.loadData()
+				   }
 
 
 	}
@@ -120,10 +122,12 @@ struct StoreDetail_Previews: PreviewProvider {
 	static var previews: some View {
 		Group{
 
-			let store = StoreInfo(id: "1", name: "Apple Store", owner: "Steve Jobs", street: "Kaiserstraße", houseNumber: "12", zip: "12345", city: "Lingen", telephone: "0123456789", email: "test@osna.de", logo: "https://img.freepik.com/freie-ikonen/mac-os_318-10374.jpg", coordinates: StoreInfo.Coordinates(latitude: 37.7749, longitude: -122.4194))
+			let datamanager = DataManager()
+
+			let store = StoreInfo(id: "1", name: "Apple Store", owner: "Steve Jobs", street: "Kaiserstraße", houseNumber: "12", zip: "12345", city: "Lingen", telephone: "0123456789", email: "test@osna.de", logo: "https://img.freepik.com/freie-ikonen/mac-os_318-10374.jpg", backgroundImage: "https://wallpapers.com/wp-content/themes/wallpapers.com/src/splash-n.jpg", coordinates: StoreInfo.Coordinates(latitude: 37.7749, longitude: -122.4194))
 
 
-			StoreDetail(store: store)
+			StoreDetail(dataManager: datamanager, store: store)
 		}
 
 

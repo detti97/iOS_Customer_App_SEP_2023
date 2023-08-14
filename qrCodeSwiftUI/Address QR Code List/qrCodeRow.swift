@@ -20,7 +20,7 @@ struct qrCodeRow: View {
             
             Image(systemName: "qrcode.viewfinder")
                 .font(.system(size: 80))
-                .foregroundColor(.blue)
+                .foregroundColor(.accentColor)
             Spacer()
             Text(adressString)
                 .font(.headline)

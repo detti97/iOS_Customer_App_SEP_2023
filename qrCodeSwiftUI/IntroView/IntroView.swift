@@ -249,11 +249,11 @@ struct IntroView: View {
 							plz = ""
 							label = ""
 
-							/*isActiveThirdStep = true
-							isActiveAddAddress = false*/
+							isActiveThirdStep = true
+							isActiveAddAddress = false
 
-							saveIntroState(true)
-							introState = true
+							/*saveIntroState(true)
+							introState = true*/
 						}) {
 							HStack {
 								Image(systemName: "square.and.arrow.down.fill")

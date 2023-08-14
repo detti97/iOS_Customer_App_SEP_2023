@@ -33,7 +33,7 @@ struct AddressListView: View {
 				})
 				.padding()
 				.background(Color.clear)
-				.foregroundColor(.blue)
+				.foregroundColor(.accentColor)
 				.cornerRadius(8)
 				.padding(.trailing, 10)
 				.sheet(isPresented: $showingAddAddressSheet, content: {

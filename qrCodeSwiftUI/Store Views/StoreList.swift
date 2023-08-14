@@ -31,7 +31,7 @@ struct StoreList: View {
 
 					List(dataManager.stores) { store in
 						NavigationLink{
-							StoreDetail(store: store)
+							StoreDetail(dataManager: dataManager, store: store)
 						} label: {
 							StoreRow(store: store)
 						}

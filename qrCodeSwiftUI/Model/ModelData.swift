@@ -18,7 +18,7 @@ class DataManager: ObservableObject {
 		}
 
 		URLSession.shared.dataTask(with: url) { data, response, error in
-			if let error = error {
+			if error != nil {
 				DispatchQueue.main.async {
 					self.errorLoading = true
 					print("Fehler beim Laden der Daten")
@@ -34,6 +34,7 @@ class DataManager: ObservableObject {
 					DispatchQueue.main.async {
 						self.stores = loadedData
 						self.errorLoading = false
+						print(loadedData)
 					}
 				} catch {
 					DispatchQueue.main.async {

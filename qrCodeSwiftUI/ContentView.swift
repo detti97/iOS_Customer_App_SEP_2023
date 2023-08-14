@@ -13,6 +13,8 @@ struct ContentView: View {
     @State private var showAddressAlert = false
 	@State private var introshown = false
 
+	@StateObject private var dataManager = DataManager()
+
 
     var body: some View {
 
