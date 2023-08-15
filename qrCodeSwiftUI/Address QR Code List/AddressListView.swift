@@ -17,7 +17,7 @@ struct AddressListView: View {
 			VStack {
 				List {
 					ForEach(addressBook.addresses) { address in
-						NavigationLink(destination: qrCodeView(addressString: address.toStringQrString())) {
+						NavigationLink(destination: qrCodeView(address: address)) {
 							qrCodeRow(adressString: (address.toString()))
 						}
 					}

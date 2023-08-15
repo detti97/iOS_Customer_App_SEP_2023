@@ -25,6 +25,11 @@ struct qrCodeRow: View {
             Text(adressString)
                 .font(.headline)
         }
+		.contextMenu {
+						Button("Option 1") {
+							// Perform action for option 1
+						}
+					}
     }
 }
 struct qrCodeRow_Previews: PreviewProvider {

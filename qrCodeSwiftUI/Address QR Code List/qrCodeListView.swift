@@ -10,7 +10,7 @@ import SwiftUI
 
 struct qrCodeListView: View {
     
-    @State var adressString: String = ""
+	@State var address: recipient
     @State var showFormView = false
 
 	@State static var returnedBool: Bool?
@@ -18,8 +18,8 @@ struct qrCodeListView: View {
     var body: some View {
         NavigationView{
             List{
-                qrCodeRow(adressString: adressString)
-                NavigationLink(destination: qrCodeView(addressString: adressString)) {
+                qrCodeRow(adressString: "adressString")
+				NavigationLink(destination: qrCodeView(address: address)) {
                     Text("QR Code anzeigen")
                 }
             }
@@ -45,6 +45,7 @@ struct qrCodeListView: View {
     
     struct qrCodeListView_Previews: PreviewProvider {
         static var previews: some View {
-            qrCodeListView(adressString: "hallo")
+
+			qrCodeListView(address: recipient(lastName: "a", firstName: "b", street: "c", streetNr: "d", plz: "e") )
         }
     }

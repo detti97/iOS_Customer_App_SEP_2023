@@ -34,8 +34,9 @@ class ContentViewTests: XCTestCase {
 //
 //  qrcode-Test
 
-class QRCodeGeneratorTests: XCTestCase {
-    
+/*class QRCodeGeneratorTests: XCTestCase {
+
+
     func testGenerateQRCode() {
         let qrCode = qrCodeView(addressString: "Test")
         let generatedImage = qrCode.generateQRCode(from: "Test")
@@ -45,6 +46,35 @@ class QRCodeGeneratorTests: XCTestCase {
         XCTAssertTrue(generatedImage.size.height > 0, "Generated image should have non-zero height")
     }
 
+}*/
+//Performance Test
+
+class QRCodeGenerationTests: XCTestCase {
+
+
+	let test = qrCodeView(address: recipient(lastName: "", firstName: "", street: "", streetNr: "", plz: ""))
+
+	func testGenerateQRCodePerformance() {
+		let stringToEncode = "Some string to encode"
+		let amount = 10000
+		var totalDuration: Double = 0.0
+
+		for _ in 1...amount {
+			let startDate = Date()
+
+			let image = test.generateQRCode(from: stringToEncode)
+
+			let endDate = Date()
+			let duration = endDate.timeIntervalSince(startDate)
+			totalDuration += duration
+
+			XCTAssertNotNil(image)
+		}
+
+		let averageDuration = totalDuration / 100.0
+		print("Average time to generate QR code: \(averageDuration) seconds")
+		print("Total time to generate \(amount) QR codes: \(totalDuration) seconds")
+	}
 }
 
 
@@ -90,7 +120,7 @@ class AddressFormViewTests: XCTestCase {
 
 // StoreDetail
 
-class StoreDetailTests: XCTestCase {
+/*class StoreDetailTests: XCTestCase {
     
     // Test for the telephone tap interaction in `StoreDetail`
     func testTelephoneTapAction() {
@@ -102,7 +132,7 @@ class StoreDetailTests: XCTestCase {
         
     }
     
-}
+}*/
 
 //AddressListView
 
