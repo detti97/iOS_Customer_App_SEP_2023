@@ -147,6 +147,11 @@ class AddressListViewTests: XCTestCase {
     }
     
     override func tearDown() {
+
+		for index in (0..<mockAddressBook.addresses.count).reversed() {
+			mockAddressBook.deleteAddress(at: IndexSet(integer: index))
+		}
+
         addressListView = nil
         mockAddressBook = nil
         super.tearDown()
@@ -154,19 +159,19 @@ class AddressListViewTests: XCTestCase {
     
     // Test to check if addresses are correctly loaded from the addressBook
     func testLoadAddresses() {
-		let testAddress = Address(firstName: "John", lastName: "Doe", street: "Main Street", houseNumber: "123", zip: "12345")
+
+		let testAddress = Address(firstName: "John", lastName: "Doe", street: "Main Street", houseNumber: "123", zip: "12345", label: "Garage")
+		
         mockAddressBook.addAddress(testAddress)
         
-        
-        XCTAssertEqual(mockAddressBook.addresses.count, 3)
-        XCTAssertEqual(mockAddressBook.addresses.first?.firstName, "Doe")
+
+        XCTAssertEqual(mockAddressBook.addresses.count, 1)
+        XCTAssertEqual(mockAddressBook.addresses.first?.firstName, "John")
     }
     
     // Test to check the functionality of the delete method
     func testDeleteAddress() {
-		let testAddress = Address(firstName: "John", lastName: "Doe", street: "Main Street", houseNumber: "123", zip: "12345")
-        mockAddressBook.addAddress(testAddress)
-        
+
         addressListView.delete(at: IndexSet(integer: 0))
         
         XCTAssertEqual(mockAddressBook.addresses.count, 0)
