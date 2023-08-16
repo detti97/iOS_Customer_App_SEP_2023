@@ -1,0 +1,54 @@
+{
+  "configurations" : [
+    {
+      "id" : "25DD9A9A-E602-4494-9969-91A115EA7CEA",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:qrCodeSwiftUI.xcodeproj",
+      "identifier" : "6084D5872A8D87F2005AC588",
+      "name" : "CustomerAppUITests"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:qrCodeSwiftUI.xcodeproj",
+        "identifier" : "5264A2FB2A838EBB00EE3258",
+        "name" : "qrCodeSwiftUNIT-Tests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:qrCodeSwiftUI.xcodeproj",
+        "identifier" : "5264A3102A839E4F00EE3258",
+        "name" : "qrCodeSwiftUITests1"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:qrCodeSwiftUI.xcodeproj",
+        "identifier" : "6084D5772A8D6805005AC588",
+        "name" : "qrCodeSwiftUITests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:qrCodeSwiftUI.xcodeproj",
+        "identifier" : "6084D5872A8D87F2005AC588",
+        "name" : "CustomerAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

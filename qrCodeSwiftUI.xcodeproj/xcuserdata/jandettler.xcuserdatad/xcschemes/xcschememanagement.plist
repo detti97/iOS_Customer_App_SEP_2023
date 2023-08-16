@@ -7,7 +7,40 @@
 		<key>qrCodeSwiftUI.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>qrCodeSwiftUITests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>qrCodeSwiftUNIT-Tests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>5264A2FB2A838EBB00EE3258</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5264A3102A839E4F00EE3258</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>607E6A4529D8EF3700A12B32</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6084D5772A8D6805005AC588</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

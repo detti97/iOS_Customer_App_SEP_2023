@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "2F2CF4ED-CF9D-46E9-81EE-12BE42B35517",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:qrCodeSwiftUI.xcodeproj",
+        "identifier" : "5264A2FB2A838EBB00EE3258",
+        "name" : "qrCodeSwiftUNIT-Tests"
+      }
+    }
+  ],
+  "version" : 1
+}

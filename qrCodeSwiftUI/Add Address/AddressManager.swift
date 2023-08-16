@@ -18,8 +18,7 @@ struct Address: Identifiable, Codable {
 	var label: String?
 
 	func toString() -> String {
-			var result = "\n\(lastName) \(firstName) \n"
-			result += "\(street) \(houseNumber)\n"
+			var result = "\(lastName) \(firstName)\n\(street) \(houseNumber)\n"
 
 			if let label = label {
 				result += "\(label)"
