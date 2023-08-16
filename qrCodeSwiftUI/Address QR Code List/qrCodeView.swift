@@ -118,7 +118,7 @@ struct QRCodeView: View {
 
 					}
 					.navigationBarItems(leading: cancelButton)
-					.position(x: 215, y: -40)
+					.position(x: 195, y: -40)
 
 				}
 
