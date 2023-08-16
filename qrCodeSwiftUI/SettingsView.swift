@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SettingsView: View {
 
-	@State var showEditAddress = false
+	@State private var showEditAddress = false
+	@State private var showInfo = false
 	@AppStorage("isDarkMode") private var isDarkMode = false
 	@State static var returnedBool: Bool?
 	@Binding var introState: Bool
@@ -19,78 +20,62 @@ struct SettingsView: View {
 		NavigationView{
 
 			VStack{
-
-				Form{
-
-					Section(header: Text("Adresse")) {
-						Button(action: {
-							showEditAddress = true
-						}) {
-							Text("Adresse hinzufügen")
-						}
-						.sheet(isPresented: $showEditAddress) {
-							AddressAddView(addressBook: AddressBook())
-						}
-					}
-					Section(header: Text("Daten löschen")){
-						Button(action: {
-							DispatchQueue.main.async {
-								deleteAll()
-							}
-						}){
-							Text("Alle Adressen löschen")
-								.foregroundColor(Color.red)
-						}
-						Button(action:{
-							introState = false
-							UserDefaults.standard.removeObject(forKey: "IntroState")
-
-						}){
-							Text("Intro Reset")
-								.foregroundColor(.red)
-						}
-						Section() {
-							Toggle(isOn: $isDarkMode) {
-								Text("Dark Mode")
-							}
-						}
-
-					}
-				}
-				.navigationTitle("Einstellungen")
-
 				VStack{
+					Form{
 
-					VStack(alignment: .center, spacing: 20) {
-
-						HStack{
-							Image(systemName: "shippingbox")
-							Text("Impressum")
+						Section(header: Text("Adresse")) {
+							Button(action: {
+								showEditAddress = true
+							}) {
+								Text("Adresse hinzufügen")
+							}
+							.sheet(isPresented: $showEditAddress) {
+								AddressAddView(addressBook: AddressBook())
+							}
 						}
-						.foregroundColor(.purple)
-						.font(.largeTitle)
-						.fontWeight(.heavy)
+						Section(header: Text("Daten löschen")){
+							Button(action: {
+								DispatchQueue.main.async {
+									deleteAll()
+								}
+							}){
+								Text("Alle Adressen löschen")
+									.foregroundColor(Color.red)
+							}
+							Button(action:{
+								introState = false
+								UserDefaults.standard.removeObject(forKey: "IntroState")
 
-						VStack (alignment: .center, spacing: 5){
-
-							Text("Diese App wurde von Studierenden")
-							Text("der Hochschule Osnabrück, im Rahmen des Sofwareentwicklungsprojekts, entwickelt.")
-
-							Text("Alaa Chraih\nSadik Bajrami\nJan Dettler\nAmirali Haghighatkhah\nRania Mohammad\nChristian Minich ")
-
+							}){
+								Text("Intro Reset")
+									.foregroundColor(.red)
+							}
+							Section() {
+								Toggle(isOn: $isDarkMode) {
+									Text("Dark Mode")
+								}
+							}
 						}
-						.fontWeight(.heavy)
-						.multilineTextAlignment(.center)
-						.background(
-							RoundedRectangle(cornerRadius: 10) // Radius für die abgerundeten Ecken
-								.fill(Color.white) // Hintergrundfarbe des Rechtecks
-								.shadow(radius: 5) // Schatten für das Rechteck
-						)
-
 					}
+
+				}
+				VStack(alignment: .trailing){
+
+					Button(action: {
+								   showInfo.toggle()
+							   }) {
+								   Image(systemName: "info.circle")
+									   .font(.system(size: 30))
+							   }
+							   .sheet(isPresented: $showInfo) {
+								   ImpressumView()
+							   }
+
+
 
 				}
 			}
+			.navigationTitle("Einstellungen")
 
 		}
 	}
