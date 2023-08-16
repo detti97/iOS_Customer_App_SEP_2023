@@ -8,18 +8,18 @@
 import Foundation
 
 
-struct recipient: Identifiable, Codable {
+struct Address: Identifiable, Codable {
 	var id = UUID()
-	var lastName: String
 	var firstName: String
+	var lastName: String
 	var street: String
-	var streetNr: String
-	var plz: String
+	var houseNumber: String
+	var zip: String
 	var label: String?
 
 	func toString() -> String {
-			var result = "\n\(firstName) \(lastName) \n"
-			result += "\(street) \(streetNr)\n"
+			var result = "\n\(lastName) \(firstName) \n"
+			result += "\(street) \(houseNumber)\n"
 
 			if let label = label {
 				result += "\(label)"
@@ -27,19 +27,19 @@ struct recipient: Identifiable, Codable {
 			return result
 		}
 	func toStringQrString() -> String {
-		let result = "\(firstName)&\(lastName)&\(street)&\(streetNr)&\(plz)"
+		let result = "\(lastName)&\(firstName)&\(street)&\(houseNumber)&\(zip)"
 			return result
 		}
 }
 
 class AddressBook: ObservableObject {
-	@Published var addresses: [recipient] = []
+	@Published var addresses: [Address] = []
 
 	init() {
 		loadData()
 	}
 
-	func addAddress(_ address: recipient) {
+	func addAddress(_ address: Address) {
 		addresses.append(address)
 		saveData()
 	}
@@ -53,7 +53,7 @@ class AddressBook: ObservableObject {
 		if let data = UserDefaults.standard.data(forKey: "addressBook") {
 			do {
 				let decoder = JSONDecoder()
-				addresses = try decoder.decode([recipient].self, from: data)
+				addresses = try decoder.decode([Address].self, from: data)
 			} catch {
 				print("Error loading data: \(error)")
 			}

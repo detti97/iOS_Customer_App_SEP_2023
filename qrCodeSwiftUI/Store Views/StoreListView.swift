@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StoreList: View {
+struct StoreListView: View {
 
 	@StateObject public var dataManager = DataManager()
 	@State private var showErrorAlert = false
@@ -31,9 +31,9 @@ struct StoreList: View {
 
 					List(dataManager.stores) { store in
 						NavigationLink{
-							StoreDetail(dataManager: dataManager, store: store)
+							StoreDetailView(dataManager: dataManager, store: store)
 						} label: {
-							StoreRow(store: store)
+							StoreRowView(store: store)
 						}
 					}
 					.navigationTitle("Teilnehmende Geschäfte")
@@ -53,7 +53,7 @@ struct StoreList: View {
 
 struct StoreList_Previews: PreviewProvider {
 	static var previews: some View {
-		StoreList()
+		StoreListView()
 	}
 }
 

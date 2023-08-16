@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StoreDetail: View {
+struct StoreDetailView: View {
 
 	//@StateObject public var dataManager = DataManager()
 	@ObservedObject var dataManager: DataManager
@@ -37,7 +37,6 @@ struct StoreDetail: View {
 
 					Text(store.name)
 						.font(.largeTitle)
-
 						.padding(.top)
 						.fontWeight(.heavy)
 						.foregroundColor(.white)
@@ -101,8 +100,6 @@ struct StoreDetail: View {
 
 				}
 
-
-
 			}
 			.navigationTitle(store.name)
 			.navigationBarTitleDisplayMode(.inline)
@@ -127,7 +124,7 @@ struct StoreDetail_Previews: PreviewProvider {
 			let store = StoreInfo(id: "1", name: "Apple Store", owner: "Steve Jobs", street: "Kaiserstraße", houseNumber: "12", zip: "12345", city: "Lingen", telephone: "0123456789", email: "test@osna.de", logo: "https://img.freepik.com/freie-ikonen/mac-os_318-10374.jpg", backgroundImage: "https://wallpapers.com/wp-content/themes/wallpapers.com/src/splash-n.jpg", coordinates: StoreInfo.Coordinates(latitude: 37.7749, longitude: -122.4194))
 
 
-			StoreDetail(dataManager: datamanager, store: store)
+			StoreDetailView(dataManager: datamanager, store: store)
 		}
 
 

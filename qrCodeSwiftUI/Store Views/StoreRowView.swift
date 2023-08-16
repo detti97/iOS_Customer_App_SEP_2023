@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StoreRow: View {
+struct StoreRowView: View {
     
     var store: StoreInfo
     
@@ -36,7 +36,7 @@ struct StoreRow_Previews: PreviewProvider {
 		let store = dataManager.stores[1] // Beispielhafter Store
 
 		return Group {
-			StoreRow(store: store)
+			StoreRowView(store: store)
 		}
 		.previewLayout(.fixed(width: 300, height: 70))
 		.environmentObject(dataManager) // dataManager als Environment-Objekt setzen

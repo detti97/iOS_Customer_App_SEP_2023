@@ -33,29 +33,28 @@ struct ContentView: View {
 							.tabItem {
 								Label("Lingen Code", systemImage: "qrcode")
 							}
-						StoreList()
+						StoreListView()
 							.tabItem {
 								Label("Erkunden", systemImage: "location")
 							}
 						SettingsView(introState: $introshown)
 							.tabItem {
 								Label("Einstellungen", systemImage: "gear")
+									.foregroundColor(.white)
 							}
+						
 					}
 					.onAppear {
-						if addressBook.addresses.isEmpty {
-							showAddressAlert = true
-						}
-					}
-				}
-				.alert(isPresented: $showAddressAlert) {
-					Alert(
-						title: Text("Herzlich Willkommen in der Lingen-Liefert App"),
-						message: Text("Bitte geben Sie eine Adresse ein, indem Sie auf den + Button unten drücken"),
-						dismissButton: .default(Text("OK"))
-					)
-				}
+						let appearance = UITabBarAppearance()
+						appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+						appearance.backgroundColor = UIColor(Color.accentColor.opacity(0.2))
 
+						UITabBar.appearance().standardAppearance = appearance
+						UITabBar.appearance().scrollEdgeAppearance = appearance
+
+					}
+
+				}
 			}
 
 		}

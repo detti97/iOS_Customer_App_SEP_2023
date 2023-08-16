@@ -11,36 +11,42 @@ struct AddressListView: View {
 	@ObservedObject var addressBook: AddressBook
 	@State private var showingAddAddressSheet = false
 	@State static var returnedBool: Bool?
+	@State private var selectedAddress: Address?
 
 	var body: some View {
-		NavigationStack {
-			VStack {
-				List {
-					ForEach(addressBook.addresses) { address in
-						NavigationLink(destination: qrCodeView(address: address)) {
-							qrCodeRow(adressString: (address.toString()))
+			NavigationView {
+				VStack {
+					List {
+						ForEach(addressBook.addresses) { address in
+							Button(action: {
+								selectedAddress = address // Setze die ausgewählte Adresse
+							}) {
+								AddressRowView(adressString: (address.toString()))
+							}
 						}
+						.onDelete(perform: delete)
 					}
-					.onDelete(perform: delete)
-				}
-				.listStyle(InsetListStyle())
+					.listStyle(InsetListStyle())
 
-				Button(action: {
-					showingAddAddressSheet = true
-				}, label: {
-					Image(systemName: "plus.circle.fill")
-						.font(.system(size: 40))
-				})
-				.padding()
-				.background(Color.clear)
-				.foregroundColor(.accentColor)
-				.cornerRadius(8)
-				.padding(.trailing, 10)
-				.sheet(isPresented: $showingAddAddressSheet, content: {
-					addressFormView(addressBook: addressBook)
-				})
-			}
-			.navigationBarTitle("Adressen")
+					Button(action: {
+						showingAddAddressSheet = true
+					}, label: {
+						Image(systemName: "plus.circle.fill")
+							.font(.system(size: 40))
+					})
+					.padding()
+					.background(Color.clear)
+					.foregroundColor(.accentColor)
+					.cornerRadius(8)
+					.padding(.trailing, 10)
+					.sheet(isPresented: $showingAddAddressSheet, content: {
+						AddressAddView(addressBook: addressBook)
+					})
+					.sheet(item: $selectedAddress) { address in
+						QRCodeView(address: address)
+					}
+				}
+				.navigationBarTitle("Addresses")
 			.navigationBarItems(trailing: EditButton())
 		}
 		.onAppear {
@@ -59,7 +65,7 @@ struct AddressListView: View {
 struct AddressListView_Previews: PreviewProvider {
 	static var previews: some View {
 		let addressBook = AddressBook()
-		addressBook.addAddress(recipient(lastName: "Doe", firstName: "John", street: "Main Street", streetNr: "123", plz: "12345"))
+		addressBook.addAddress(Address(firstName: "Doe", lastName: "John", street: "Main Street", houseNumber: "123", zip: "12345"))
 		return AddressListView(addressBook: addressBook)
 	}
 }

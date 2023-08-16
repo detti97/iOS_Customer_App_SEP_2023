@@ -29,7 +29,7 @@ struct SettingsView: View {
 							Text("Adresse hinzufügen")
 						}
 						.sheet(isPresented: $showEditAddress) {
-							addressFormView(addressBook: AddressBook())
+							AddressAddView(addressBook: AddressBook())
 						}
 					}
 					Section(header: Text("Daten löschen")){

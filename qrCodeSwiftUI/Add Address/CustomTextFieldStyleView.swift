@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomTextFieldStyle: TextFieldStyle {
+struct CustomTextFieldStyleView: TextFieldStyle {
     var systemImageName: String
     
     func _body(configuration: TextField<Self._Label>) -> some View {
@@ -25,13 +25,13 @@ struct CustomTextFieldStyle_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             TextField("Name", text: .constant(""))
-                .textFieldStyle(CustomTextFieldStyle(systemImageName: "person"))
+                .textFieldStyle(CustomTextFieldStyleView(systemImageName: "person"))
             
             TextField("Passwort", text: .constant(""))
-                .textFieldStyle(CustomTextFieldStyle(systemImageName: "lock"))
+                .textFieldStyle(CustomTextFieldStyleView(systemImageName: "lock"))
             
             TextField("Passwort", text: .constant(""))
-                .textFieldStyle(CustomTextFieldStyle(systemImageName: "qrcode"))
+                .textFieldStyle(CustomTextFieldStyleView(systemImageName: "qrcode"))
         }
         .padding()
         .previewLayout(.sizeThatFits)

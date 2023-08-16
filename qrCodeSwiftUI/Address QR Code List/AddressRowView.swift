@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct qrCodeRow: View {
+struct AddressRowView: View {
     
     var adressString: String
         
@@ -20,7 +20,7 @@ struct qrCodeRow: View {
             
             Image(systemName: "qrcode.viewfinder")
                 .font(.system(size: 80))
-                .foregroundColor(.accentColor)
+                .foregroundColor(.teal)
             Spacer()
             Text(adressString)
                 .font(.headline)
@@ -32,8 +32,8 @@ struct qrCodeRow: View {
 					}
     }
 }
-struct qrCodeRow_Previews: PreviewProvider {
+struct AddressRowView_Previews: PreviewProvider {
     static var previews: some View {
-        qrCodeRow(adressString: "hallo")
+        AddressRowView(adressString: "hallo")
     }
 }

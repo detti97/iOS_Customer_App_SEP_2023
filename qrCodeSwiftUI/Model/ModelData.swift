@@ -12,7 +12,7 @@ class DataManager: ObservableObject {
 	@Published var stores: [StoreInfo] = []
 
 	func loadData() {
-		guard let url = URL(string: "http://131.173.65.77:8080/store-details") else {
+		guard let url = URL(string: "http://131.173.65.77:8080/api/store-details") else {
 			print("Fehler")
 			return
 		}
@@ -25,7 +25,7 @@ class DataManager: ObservableObject {
 				}
 				return
 			}
-
+			print(response ?? "")
 			if let data = data {
 				do {
 					let decoder = JSONDecoder()

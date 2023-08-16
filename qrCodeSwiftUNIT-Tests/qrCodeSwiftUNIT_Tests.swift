@@ -52,7 +52,7 @@ class ContentViewTests: XCTestCase {
 class QRCodeGenerationTests: XCTestCase {
 
 
-	let test = qrCodeView(address: recipient(lastName: "", firstName: "", street: "", streetNr: "", plz: ""))
+	let test = QRCodeView(address: Address(firstName: "", lastName: "", street: "", houseNumber: "", zip: ""))
 
 	func testGenerateQRCodePerformance() {
 		let stringToEncode = "Some string to encode"
@@ -85,12 +85,11 @@ class AddressFormViewTests: XCTestCase {
     // Test for the `toStringQrString` method of the `recipient` structure
     
     func testRecipientToQRString() {
-        let recipientInstance = recipient(
-            lastName: "Doe",
-            firstName: "John",
+        let recipientInstance = Address(
+			firstName: "John", lastName: "Doe",
             street: "Baker Street",
-            streetNr: "221B",
-            plz: "12345"
+            houseNumber: "221B",
+            zip: "12345"
         )
         let expectedOutput = "John&Doe&Baker Street&221B&12345"
         XCTAssertEqual(recipientInstance.toStringQrString(), expectedOutput)
@@ -102,12 +101,11 @@ class AddressFormViewTests: XCTestCase {
         let addressBook = AddressBook()
         let initialCount = addressBook.addresses.count
         
-        let newAddress = recipient(
-            lastName: "Doe",
-            firstName: "John",
+        let newAddress = Address(
+			firstName: "John", lastName: "Doe",
             street: "Baker Street",
-            streetNr: "221B",
-            plz: "12345"
+            houseNumber: "221B",
+            zip: "12345"
         )
         addressBook.addAddress(newAddress)
         XCTAssertEqual(addressBook.addresses.count, initialCount + 1)
@@ -156,17 +154,17 @@ class AddressListViewTests: XCTestCase {
     
     // Test to check if addresses are correctly loaded from the addressBook
     func testLoadAddresses() {
-        let testAddress = recipient(lastName: "Doe", firstName: "John", street: "Main Street", streetNr: "123", plz: "12345")
+		let testAddress = Address(firstName: "John", lastName: "Doe", street: "Main Street", houseNumber: "123", zip: "12345")
         mockAddressBook.addAddress(testAddress)
         
         
         XCTAssertEqual(mockAddressBook.addresses.count, 3)
-        XCTAssertEqual(mockAddressBook.addresses.first?.lastName, "Doe")
+        XCTAssertEqual(mockAddressBook.addresses.first?.firstName, "Doe")
     }
     
     // Test to check the functionality of the delete method
     func testDeleteAddress() {
-        let testAddress = recipient(lastName: "Doe", firstName: "John", street: "Main Street", streetNr: "123", plz: "12345")
+		let testAddress = Address(firstName: "John", lastName: "Doe", street: "Main Street", houseNumber: "123", zip: "12345")
         mockAddressBook.addAddress(testAddress)
         
         addressListView.delete(at: IndexSet(integer: 0))
@@ -188,3 +186,4 @@ class AddressListViewTests: XCTestCase {
         }
     }
 }
+

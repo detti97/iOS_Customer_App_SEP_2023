@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5264A2FF2A838EBB00EE3258 /* qrCodeSwiftUNIT_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5264A2FE2A838EBB00EE3258 /* qrCodeSwiftUNIT_Tests.swift */; };
 		600B17682A5D6E2200CA28BE /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B17672A5D6E2200CA28BE /* IntroView.swift */; };
-		6035373729DA287F008C7881 /* qrCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6035373629DA287F008C7881 /* qrCodeView.swift */; };
+		6035373729DA287F008C7881 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6035373629DA287F008C7881 /* QRCodeView.swift */; };
 		6073C2CB2A52123D002C9CDB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073C2CA2A52123D002C9CDB /* SettingsView.swift */; };
 		607E6A4A29D8EF3700A12B32 /* qrCodeSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E6A4929D8EF3700A12B32 /* qrCodeSwiftUIApp.swift */; };
 		607E6A4C29D8EF3700A12B32 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E6A4B29D8EF3700A12B32 /* ContentView.swift */; };
@@ -17,18 +17,18 @@
 		607E6A5129D8EF3800A12B32 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607E6A5029D8EF3800A12B32 /* Preview Assets.xcassets */; };
 		6084D5582A602F46005AC588 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6084D5572A602F46005AC588 /* SplashScreenView.swift */; };
 		6084D56E2A8968F2005AC588 /* AddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6084D56D2A8968F2005AC588 /* AddressManager.swift */; };
-		60991C3629DE372F003F148B /* qrCodeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C3529DE372F003F148B /* qrCodeListView.swift */; };
-		60991C3829DE39F8003F148B /* qrCodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C3729DE39F8003F148B /* qrCodeRow.swift */; };
-		60991C3A29DED400003F148B /* addressFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C3929DED400003F148B /* addressFormView.swift */; };
-		60991C3C29DED5EC003F148B /* CustomTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C3B29DED5EC003F148B /* CustomTextFieldStyle.swift */; };
+		6084D5712A8D1D6E005AC588 /* AddressFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6084D5702A8D1D6E005AC588 /* AddressFormView.swift */; };
+		60991C3829DE39F8003F148B /* AddressRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C3729DE39F8003F148B /* AddressRowView.swift */; };
+		60991C3A29DED400003F148B /* AddressAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C3929DED400003F148B /* AddressAddView.swift */; };
+		60991C3C29DED5EC003F148B /* CustomTextFieldStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C3B29DED5EC003F148B /* CustomTextFieldStyleView.swift */; };
 		60991C3E29DEDFDC003F148B /* AddressListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C3D29DEDFDC003F148B /* AddressListView.swift */; };
 		60991C4029DF35DF003F148B /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C3F29DF35DF003F148B /* CircleImage.swift */; };
 		60991C4529DF6E23003F148B /* Stores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C4429DF6E23003F148B /* Stores.swift */; };
 		60991C4729DF7049003F148B /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C4629DF7049003F148B /* ModelData.swift */; };
 		60991C4A29DF728D003F148B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C4929DF728D003F148B /* MapView.swift */; };
-		60991C4C29DF72DB003F148B /* StoreRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C4B29DF72DB003F148B /* StoreRow.swift */; };
-		60991C4E29DF7B6C003F148B /* StoreList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C4D29DF7B6C003F148B /* StoreList.swift */; };
-		60991C5029DF7C06003F148B /* StoreDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C4F29DF7C06003F148B /* StoreDetail.swift */; };
+		60991C4C29DF72DB003F148B /* StoreRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C4B29DF72DB003F148B /* StoreRowView.swift */; };
+		60991C4E29DF7B6C003F148B /* StoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C4D29DF7B6C003F148B /* StoreListView.swift */; };
+		60991C5029DF7C06003F148B /* StoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60991C4F29DF7C06003F148B /* StoreDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +53,7 @@
 		5264A2FE2A838EBB00EE3258 /* qrCodeSwiftUNIT_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrCodeSwiftUNIT_Tests.swift; sourceTree = "<group>"; };
 		5264A3112A839E4F00EE3258 /* qrCodeSwiftUITests1.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = qrCodeSwiftUITests1.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		600B17672A5D6E2200CA28BE /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
-		6035373629DA287F008C7881 /* qrCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrCodeView.swift; sourceTree = "<group>"; };
+		6035373629DA287F008C7881 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		6073C2CA2A52123D002C9CDB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		607E6A4629D8EF3700A12B32 /* qrCodeSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qrCodeSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607E6A4929D8EF3700A12B32 /* qrCodeSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrCodeSwiftUIApp.swift; sourceTree = "<group>"; };
@@ -62,18 +62,18 @@
 		607E6A5029D8EF3800A12B32 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6084D5572A602F46005AC588 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		6084D56D2A8968F2005AC588 /* AddressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressManager.swift; sourceTree = "<group>"; };
-		60991C3529DE372F003F148B /* qrCodeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrCodeListView.swift; sourceTree = "<group>"; };
-		60991C3729DE39F8003F148B /* qrCodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrCodeRow.swift; sourceTree = "<group>"; };
-		60991C3929DED400003F148B /* addressFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressFormView.swift; sourceTree = "<group>"; };
-		60991C3B29DED5EC003F148B /* CustomTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldStyle.swift; sourceTree = "<group>"; };
+		6084D5702A8D1D6E005AC588 /* AddressFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFormView.swift; sourceTree = "<group>"; };
+		60991C3729DE39F8003F148B /* AddressRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressRowView.swift; sourceTree = "<group>"; };
+		60991C3929DED400003F148B /* AddressAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressAddView.swift; sourceTree = "<group>"; };
+		60991C3B29DED5EC003F148B /* CustomTextFieldStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldStyleView.swift; sourceTree = "<group>"; };
 		60991C3D29DEDFDC003F148B /* AddressListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListView.swift; sourceTree = "<group>"; };
 		60991C3F29DF35DF003F148B /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		60991C4429DF6E23003F148B /* Stores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stores.swift; sourceTree = "<group>"; };
 		60991C4629DF7049003F148B /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		60991C4929DF728D003F148B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		60991C4B29DF72DB003F148B /* StoreRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRow.swift; sourceTree = "<group>"; };
-		60991C4D29DF7B6C003F148B /* StoreList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreList.swift; sourceTree = "<group>"; };
-		60991C4F29DF7C06003F148B /* StoreDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetail.swift; sourceTree = "<group>"; };
+		60991C4B29DF72DB003F148B /* StoreRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRowView.swift; sourceTree = "<group>"; };
+		60991C4D29DF7B6C003F148B /* StoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListView.swift; sourceTree = "<group>"; };
+		60991C4F29DF7C06003F148B /* StoreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,9 +121,8 @@
 		6042879829E0574F009798B5 /* Address QR Code List */ = {
 			isa = PBXGroup;
 			children = (
-				60991C3529DE372F003F148B /* qrCodeListView.swift */,
-				6035373629DA287F008C7881 /* qrCodeView.swift */,
-				60991C3729DE39F8003F148B /* qrCodeRow.swift */,
+				6035373629DA287F008C7881 /* QRCodeView.swift */,
+				60991C3729DE39F8003F148B /* AddressRowView.swift */,
 				60991C3D29DEDFDC003F148B /* AddressListView.swift */,
 			);
 			path = "Address QR Code List";
@@ -132,8 +131,9 @@
 		6042879929E057F9009798B5 /* Add Address */ = {
 			isa = PBXGroup;
 			children = (
-				60991C3B29DED5EC003F148B /* CustomTextFieldStyle.swift */,
-				60991C3929DED400003F148B /* addressFormView.swift */,
+				60991C3B29DED5EC003F148B /* CustomTextFieldStyleView.swift */,
+				60991C3929DED400003F148B /* AddressAddView.swift */,
+				6084D5702A8D1D6E005AC588 /* AddressFormView.swift */,
 				6084D56D2A8968F2005AC588 /* AddressManager.swift */,
 			);
 			path = "Add Address";
@@ -197,9 +197,9 @@
 			children = (
 				60991C3F29DF35DF003F148B /* CircleImage.swift */,
 				60991C4929DF728D003F148B /* MapView.swift */,
-				60991C4B29DF72DB003F148B /* StoreRow.swift */,
-				60991C4D29DF7B6C003F148B /* StoreList.swift */,
-				60991C4F29DF7C06003F148B /* StoreDetail.swift */,
+				60991C4B29DF72DB003F148B /* StoreRowView.swift */,
+				60991C4D29DF7B6C003F148B /* StoreListView.swift */,
+				60991C4F29DF7C06003F148B /* StoreDetailView.swift */,
 			);
 			path = "Store Views";
 			sourceTree = "<group>";
@@ -349,24 +349,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60991C3829DE39F8003F148B /* qrCodeRow.swift in Sources */,
-				60991C3C29DED5EC003F148B /* CustomTextFieldStyle.swift in Sources */,
-				60991C4C29DF72DB003F148B /* StoreRow.swift in Sources */,
-				6035373729DA287F008C7881 /* qrCodeView.swift in Sources */,
+				60991C3829DE39F8003F148B /* AddressRowView.swift in Sources */,
+				60991C3C29DED5EC003F148B /* CustomTextFieldStyleView.swift in Sources */,
+				60991C4C29DF72DB003F148B /* StoreRowView.swift in Sources */,
+				6035373729DA287F008C7881 /* QRCodeView.swift in Sources */,
 				60991C4029DF35DF003F148B /* CircleImage.swift in Sources */,
 				6084D56E2A8968F2005AC588 /* AddressManager.swift in Sources */,
 				60991C4729DF7049003F148B /* ModelData.swift in Sources */,
 				60991C4529DF6E23003F148B /* Stores.swift in Sources */,
 				60991C4A29DF728D003F148B /* MapView.swift in Sources */,
 				60991C3E29DEDFDC003F148B /* AddressListView.swift in Sources */,
+				6084D5712A8D1D6E005AC588 /* AddressFormView.swift in Sources */,
 				6073C2CB2A52123D002C9CDB /* SettingsView.swift in Sources */,
 				607E6A4C29D8EF3700A12B32 /* ContentView.swift in Sources */,
 				6084D5582A602F46005AC588 /* SplashScreenView.swift in Sources */,
-				60991C3629DE372F003F148B /* qrCodeListView.swift in Sources */,
-				60991C4E29DF7B6C003F148B /* StoreList.swift in Sources */,
+				60991C4E29DF7B6C003F148B /* StoreListView.swift in Sources */,
 				600B17682A5D6E2200CA28BE /* IntroView.swift in Sources */,
-				60991C5029DF7C06003F148B /* StoreDetail.swift in Sources */,
-				60991C3A29DED400003F148B /* addressFormView.swift in Sources */,
+				60991C5029DF7C06003F148B /* StoreDetailView.swift in Sources */,
+				60991C3A29DED400003F148B /* AddressAddView.swift in Sources */,
 				607E6A4A29D8EF3700A12B32 /* qrCodeSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
