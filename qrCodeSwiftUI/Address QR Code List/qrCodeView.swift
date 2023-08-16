@@ -23,93 +23,120 @@ struct QRCodeView: View {
 
 		NavigationView{
 
-			ZStack {
-				RoundedRectangle(cornerRadius: 20)
-					.stroke(Color.accentColor.opacity(0.7), lineWidth: 3)
-					.frame(width: width, height: height)
-
-				RoundedRectangle(cornerRadius: 20)
-					.fill(Color.accentColor.opacity(0.2))
-					.frame(width: width, height: height)
-					.shadow(color: .gray, radius: 2, x: 0, y: 0)
-
+			ZStack{
 
 				VStack{
 
-					HStack{
-						Image(systemName: "qrcode")
-							.font(.system(size: 44))
-						Text("Vorzeigen zum scannen")
-
-					}
-					.foregroundColor(.teal)
-					.font(.system(size: 24))
-					.fontWeight(.heavy)
-					.position(x: 170, y: 40)
-
-					VStack (alignment: .trailing, spacing: 10){
-
-						Image(uiImage: generateQRCode(from: address.toStringQrString()))
-							.resizable()
-							.interpolation(.none)
-							.frame(width: 200, height: 200 )
-							.cornerRadius(24)
-							.overlay(
-								RoundedRectangle(cornerRadius: 24)
-									.stroke(Color.teal, lineWidth: 10)
-							)
-							.background(.clear)
-							.shadow(radius: 5)
-							.zIndex(80)
-							.contextMenu {
-								Button(action: {
-
-								}) {
-									HStack {
-										Text("Edit")
-										Image(systemName: "pencil")
-									}
-								}
-							}
-					}
-					.position(x:170, y: 30)
-
 					VStack{
 
-						HStack{
-							Image(systemName: "house")
-							Text("Lieferadresse")
-						}
-						.foregroundColor(.teal)
-						.font(.system(size: 24))
-						.fontWeight(.heavy)
-						.position(x:170, y: 50)
+						Image("Logo_klein")
+							.resizable()
+							.scaledToFit()
+							.frame(width: 150)
 
-						HStack{
-
-							VStack(alignment: .center, spacing: 10){
-
-								Text("\(address.lastName) \(address.firstName)")
-								Text("\(address.street) \(address.houseNumber)")
-								Text("\(address.zip) Lingen")
-							}
-							.fontWeight(.heavy)
-
-						}
 					}
-					.position(x:170, y: 65)
-				}
-				.frame(width: width, height: height)
+					.position(x: 310, y: 20)
 
+					ZStack {
+						RoundedRectangle(cornerRadius: 20)
+							.stroke(Color.accentColor.opacity(0.7), lineWidth: 3)
+							.frame(width: width, height: height)
+
+						RoundedRectangle(cornerRadius: 20)
+							.fill(Color.accentColor.opacity(0.25))
+							.frame(width: width, height: height)
+							.shadow(color: .gray, radius: 2, x: 0, y: 0)
+
+
+						VStack{
+
+							HStack{
+								Image(systemName: "qrcode")
+									.font(.system(size: 44))
+								Text("Vorzeigen zum scannen")
+
+							}
+							.foregroundColor(.teal)
+							.font(.system(size: 24))
+							.fontWeight(.heavy)
+							.position(x: 170, y: 40)
+
+							VStack (alignment: .trailing, spacing: 10){
+
+								Image(uiImage: generateQRCode(from: address.toStringQrString()))
+									.resizable()
+									.interpolation(.none)
+									.frame(width: 200, height: 200 )
+									.cornerRadius(24)
+									.overlay(
+										RoundedRectangle(cornerRadius: 24)
+											.stroke(Color.teal, lineWidth: 10)
+									)
+									.background(.clear)
+									.shadow(radius: 5)
+									.zIndex(80)
+									.contextMenu {
+										Button(action: {
+
+										}) {
+											HStack {
+												Text("Edit")
+												Image(systemName: "pencil")
+											}
+										}
+									}
+							}
+							.position(x:170, y: 30)
+
+							VStack{
+
+								HStack{
+									Image(systemName: "house")
+									Text("Lieferadresse")
+								}
+								.foregroundColor(.teal)
+								.font(.system(size: 24))
+								.fontWeight(.heavy)
+								.position(x:170, y: 50)
+
+								HStack{
+
+									VStack(alignment: .center, spacing: 10){
+
+										Text("\(address.lastName) \(address.firstName)")
+										Text("\(address.street) \(address.houseNumber)")
+										Text("\(address.zip) Lingen")
+									}
+									.fontWeight(.heavy)
+
+								}
+							}
+							.position(x:170, y: 65)
+						}
+						.frame(width: width, height: height)
+
+
+					}
+					.navigationBarItems(leading: cancelButton)
+					.position(x: 215, y: -40)
+
+				}
 
 			}
 			.background(
+				ZStack {
+					Image("background_qr")
+						.resizable()
+						.ignoresSafeArea()
 
+					Rectangle()
+						.fill(.ultraThinMaterial)
+						.ignoresSafeArea()
+
+				}
 			)
-			.navigationBarItems(leading: cancelButton)
-			.position(x: 195, y: 250)
-
 		}
+
 
 	}
 
