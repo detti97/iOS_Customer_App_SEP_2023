@@ -27,6 +27,7 @@ class DataManager: ObservableObject {
 			}
 			print(response ?? "")
 			if let data = data {
+				print(data)
 				do {
 					let decoder = JSONDecoder()
 					let loadedData = try decoder.decode([StoreInfo].self, from: data)

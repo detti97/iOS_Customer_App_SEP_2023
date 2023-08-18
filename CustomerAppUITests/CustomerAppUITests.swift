@@ -90,19 +90,48 @@ final class CustomerAppUITests: XCTestCase {
 		//let janSettlerKaiserstraE39UniButton = collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Jan Settler\nKaiserstraße 39\nUni"]/*[[".cells.buttons[\"Jan Settler\\nKaiserstraße 39\\nUni\"]",".buttons[\"Jan Settler\\nKaiserstraße 39\\nUni\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
 		//janSettlerKaiserstraE39UniButton.swipeLeft()
 
-		app.navigationBars["Addresses"]/*@START_MENU_TOKEN@*/.buttons["Edit"]/*[[".otherElements[\"Edit\"].buttons[\"Edit\"]",".buttons[\"Edit\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+		let navigationBarEditButton = app.navigationBars["Addresses"]/*@START_MENU_TOKEN@*/.buttons["Edit"]/*[[".otherElements[\"Edit\"].buttons[\"Edit\"]",".buttons[\"Edit\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+		XCTAssert(navigationBarEditButton.exists)
+		navigationBarEditButton.tap()
 		collectionViewsQuery.children(matching: .cell).element(boundBy: 0).otherElements.containing(.image, identifier:"remove").element.tap()
 
 
+		tabBarErkunden.tap()
 
-		//tabBar.buttons["Einstellungen"].tap()
+		collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["McDonalds"]/*[[".cells.buttons[\"McDonalds\"]",".buttons[\"McDonalds\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+
+		XCTAssertTrue(app.images.matching(identifier: "storeLogoImage").element.exists)
+
+		XCTAssertTrue(app.staticTexts["storeNameLabel"].exists)
+		XCTAssertTrue(app.staticTexts["storeOwnerLabel"].exists)
+		XCTAssertTrue(app.staticTexts["storeAddressLabel"].exists)
+		XCTAssertTrue(app.staticTexts["storePhoneLabel"].exists)
+		XCTAssertTrue(app.staticTexts["storeEmailLabel"].exists)
+		XCTAssertTrue(app.maps["mapView"].exists)
 
 
+		let app = XCUIApplication()
+		let collectionViewsQuery = app.collectionViews
+		let didFigsDsfDassaultDddButton = collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Did Figs\nDSF Dassault\nDdd"]/*[[".cells.buttons[\"Did Figs\\nDSF Dassault\\nDdd\"]",".buttons[\"Did Figs\\nDSF Dassault\\nDdd\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+		didFigsDsfDassaultDddButton.swipeLeft()
+
+		let zurCkButton = app.navigationBars["_TtGC7SwiftUI19UIHosting"]/*@START_MENU_TOKEN@*/.buttons["Zurück"]/*[[".otherElements[\"Zurück\"].buttons[\"Zurück\"]",".buttons[\"Zurück\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+		zurCkButton.tap()
+		didFigsDsfDassaultDddButton.swipeLeft()
+		zurCkButton.tap()
+		app.navigationBars["Addresses"]/*@START_MENU_TOKEN@*/.buttons["Edit"]/*[[".otherElements[\"Edit\"].buttons[\"Edit\"]",".buttons[\"Edit\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+		collectionViewsQuery.children(matching: .cell).element(boundBy: 0).otherElements.containing(.image, identifier:"remove").element.tap()
+				
 
 
+/*
+		let scrollViewsQuery = app.scrollViews
+		let elementsQuery = scrollViewsQuery.otherElements
+		let vkpointfeatureMap = elementsQuery/*@START_MENU_TOKEN@*/.maps.containing(.other, identifier:"VKPointFeature").element/*[[".maps.containing(.other, identifier:\"Map pin\").element",".maps.containing(.other, identifier:\"VKPointFeature\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+		vkpointfeatureMap.tap()
+		vkpointfeatureMap.tap()
+*/
 
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
     func testLaunchPerformance() throws {

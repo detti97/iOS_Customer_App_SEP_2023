@@ -35,15 +35,15 @@ struct QRCodeView: View {
 							.frame(width: 150)
 
 					}
-					.position(x: 310, y: 20)
+					.position(x: 310, y: 30)
 
 					ZStack {
 						RoundedRectangle(cornerRadius: 20)
-							.stroke(Color.accentColor.opacity(0.7), lineWidth: 3)
+							.stroke(Color.gray.opacity(0.7), lineWidth: 3)
 							.frame(width: width, height: height)
 
 						RoundedRectangle(cornerRadius: 20)
-							.fill(Color.accentColor.opacity(0.25))
+							.fill(Color(red: 238 / 255, green: 238 / 255, blue: 238 / 255).opacity(0.45))
 							.frame(width: width, height: height)
 							.shadow(color: .gray, radius: 2, x: 0, y: 0)
 
@@ -53,10 +53,11 @@ struct QRCodeView: View {
 							HStack{
 								Image(systemName: "qrcode")
 									.font(.system(size: 44))
+									.foregroundColor(.black)
 								Text("Vorzeigen zum scannen")
 
 							}
-							.foregroundColor(.teal)
+							.foregroundColor(.accentColor)
 							.font(.system(size: 24))
 							.fontWeight(.heavy)
 							.position(x: 170, y: 40)
@@ -66,11 +67,11 @@ struct QRCodeView: View {
 								Image(uiImage: generateQRCode(from: address.toStringQrString()))
 									.resizable()
 									.interpolation(.none)
-									.frame(width: 200, height: 200 )
+									.frame(width: 200, height: 200)
 									.cornerRadius(24)
 									.overlay(
-										RoundedRectangle(cornerRadius: 24)
-											.stroke(Color.teal, lineWidth: 10)
+										RoundedRectangle(cornerRadius: 28)
+											.stroke(Color.accentColor, lineWidth: 8)
 									)
 									.background(.clear)
 									.shadow(radius: 5)
@@ -94,7 +95,7 @@ struct QRCodeView: View {
 									Image(systemName: "house")
 									Text("Lieferadresse")
 								}
-								.foregroundColor(.teal)
+								.foregroundColor(.accentColor)
 								.font(.system(size: 24))
 								.fontWeight(.heavy)
 								.position(x:170, y: 50)
@@ -118,14 +119,14 @@ struct QRCodeView: View {
 
 					}
 					.navigationBarItems(leading: cancelButton)
-					.position(x: 195, y: -40)
+					.position(x: 195, y: -30)
 
 				}
 
 			}
 			.background(
 				ZStack {
-					Image("background_qr")
+					Image("test2")
 						.resizable()
 						.ignoresSafeArea()
 
@@ -198,7 +199,7 @@ struct CardFront : View {
 
 			VStack{
 
-				//AddressForm(addressBook: addressBook, address: address)
+				//AddressFormView(addressBook: addressBook, address: addres,)
 
 			}
 			.frame(width: width-60, height: height)
