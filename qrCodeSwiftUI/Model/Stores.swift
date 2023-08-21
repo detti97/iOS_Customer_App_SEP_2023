@@ -10,15 +10,12 @@ import SwiftUI
 import CoreLocation
 
 
-struct StoreInfo: Identifiable, Codable, Hashable {
+struct StoreInfo: Decodable, Identifiable {
 
     var id: String
     var name: String
     var owner: String
-    var street: String
-    var houseNumber: String
-    var zip: String
-    var city: String
+	var address: Address
     var telephone: String
     var email: String
     var logo: String
@@ -38,14 +35,11 @@ struct StoreInfo: Identifiable, Codable, Hashable {
 			var longitude: Double
         }
 
-	init(id: String, name: String, owner: String, street: String, houseNumber: String, zip: String, city: String, telephone: String, email: String, logo: String, backgroundImage: String, coordinates: Coordinates) {
+	init(id: String, name: String, owner: String, address: Address, telephone: String, email: String, logo: String, backgroundImage: String, coordinates: Coordinates) {
 			self.id = id
 			self.name = name
 			self.owner = owner
-			self.street = street
-			self.houseNumber = houseNumber
-			self.zip = zip
-			self.city = city
+			self.address = address
 			self.telephone = telephone
 			self.email = email
 			self.logo = logo

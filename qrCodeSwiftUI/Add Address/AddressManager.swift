@@ -7,18 +7,25 @@
 
 import Foundation
 
+struct Address: Codable {
 
-struct Address: Identifiable, Codable {
-	var id = UUID()
-	var firstName: String
-	var lastName: String
 	var street: String
 	var houseNumber: String
 	var zip: String
+	var city: String
+
+}
+
+
+struct Recipient: Identifiable, Codable {
+	var id = UUID()
+	var firstName: String
+	var lastName: String
+	var address: Address
 	var label: String?
 
 	func toString() -> String {
-			var result = "\(lastName) \(firstName)\n\(street) \(houseNumber)\n"
+		var result = "\(lastName) \(firstName)\n\(address.street) \(address.houseNumber)\n"
 
 			if let label = label {
 				result += "\(label)"
@@ -26,25 +33,25 @@ struct Address: Identifiable, Codable {
 			return result
 		}
 	func toStringQrString() -> String {
-		let result = "\(lastName)&\(firstName)&\(street)&\(houseNumber)&\(zip)"
+		let result = "\(lastName)&\(firstName)&\(address.street)&\(address.houseNumber)&\(address.zip)"
 			return result
 		}
 }
 
 class AddressBook: ObservableObject {
-	@Published var addresses: [Address] = []
+	@Published var addressBook: [Recipient] = []
 
 	init() {
 		loadData()
 	}
 
-	func addAddress(_ address: Address) {
-		addresses.append(address)
+	func addAddress(_ address: Recipient) {
+		addressBook.append(address)
 		saveData()
 	}
 
 	func deleteAddress(at indexSet: IndexSet) {
-		addresses.remove(atOffsets: indexSet)
+		addressBook.remove(atOffsets: indexSet)
 		saveData()
 	}
 
@@ -52,7 +59,7 @@ class AddressBook: ObservableObject {
 		if let data = UserDefaults.standard.data(forKey: "addressBook") {
 			do {
 				let decoder = JSONDecoder()
-				addresses = try decoder.decode([Address].self, from: data)
+				addressBook = try decoder.decode([Recipient].self, from: data)
 			} catch {
 				print("Error loading data: \(error)")
 			}
@@ -62,7 +69,7 @@ class AddressBook: ObservableObject {
 	func saveData() {
 		do {
 			let encoder = JSONEncoder()
-			let data = try encoder.encode(addresses)
+			let data = try encoder.encode(addressBook)
 			UserDefaults.standard.set(data, forKey: "addressBook")
 		} catch {
 			print("Error saving data: \(error)")

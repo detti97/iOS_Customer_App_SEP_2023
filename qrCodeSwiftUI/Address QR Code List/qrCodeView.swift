@@ -11,7 +11,7 @@ import CoreImage
 
 struct QRCodeView: View {
 
-	@State var address: Address
+	@State var address: Recipient
 	@State private var secret = 0
 
 	@Environment(\.presentationMode) private var presentationMode
@@ -105,8 +105,8 @@ struct QRCodeView: View {
 									VStack(alignment: .center, spacing: 10){
 
 										Text("\(address.lastName) \(address.firstName)")
-										Text("\(address.street) \(address.houseNumber)")
-										Text("\(address.zip) Lingen")
+										Text("\(address.address.street) \(address.address.houseNumber)")
+										Text("\(address.address.zip) Lingen")
 									}
 									.fontWeight(.heavy)
 
@@ -174,7 +174,7 @@ struct QRCodeView: View {
 struct qrCodeView_Previews: PreviewProvider {
 	static var previews: some View {
 
-		QRCodeView(address:Address(firstName: "Dettler", lastName: "Jan", street: "kaiser", houseNumber: "39", zip: "49809"))
+		QRCodeView(address:Recipient(firstName: "Dettler", lastName: "Jan", address: Address(street: "kaiser", houseNumber: "39", zip: "49809", city: "")))
 	}
 }
 
@@ -184,7 +184,7 @@ struct CardFront : View {
 	let height : CGFloat
 	@Binding var degree : Double
 	@ObservedObject var addressBook: AddressBook
-	@State var address = Address(firstName: "", lastName: "", street: "", houseNumber: "", zip: "")
+	@State var address = Recipient(firstName: "", lastName: "", address: Address(street: "", houseNumber: "", zip: "", city: ""))
 
 	var body: some View {
 		ZStack {
@@ -226,7 +226,7 @@ struct CardBack : View {
 	let height : CGFloat
 	@Binding var degree : Double
 
-	@State var address: Address
+	@State var address: Recipient
 
 	func generateQRCode(from string: String) -> UIImage {
 
@@ -313,8 +313,8 @@ struct CardBack : View {
 						VStack(alignment: .center, spacing: 10){
 
 							Text("\(address.lastName) \(address.firstName)")
-							Text("\(address.street) \(address.houseNumber)")
-							Text("\(address.zip) Lingen")
+							Text("\(address.address.street) \(address.address.houseNumber)")
+							Text("\(address.address.zip) Lingen")
 						}
 						.fontWeight(.heavy)
 
@@ -335,7 +335,7 @@ struct Card: View {
 	@State var frontDegree = -90.0
 	@State var isFlipped = false
 
-	@State var address: Address
+	@State var address: Recipient
 
 	let width : CGFloat = 350
 	let height : CGFloat = 500
@@ -387,7 +387,7 @@ struct Card: View {
 	}
 	struct ContentView_Previews: PreviewProvider {
 		static var previews: some View {
-			let address = Address(firstName: "jan", lastName: "de", street: "Ba", houseNumber: "12", zip: "49809")
+			let address = Recipient(firstName: "jan", lastName: "de", address: Address(street: "Ba", houseNumber: "12", zip: "49809", city: ""))
 			Card(address: address)
 		}
 	}

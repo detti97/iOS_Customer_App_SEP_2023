@@ -29,7 +29,7 @@ struct AddressAddView: View {
 
 				VStack{
 
-					AddressFormView(addressBook: addressBook, success: $success)
+					addressFormView(addressBook: addressBook, success: $success)
 
 				}
 			}

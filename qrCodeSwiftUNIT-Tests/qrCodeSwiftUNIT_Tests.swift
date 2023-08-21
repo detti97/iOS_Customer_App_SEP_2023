@@ -16,13 +16,13 @@ class ContentViewTests: XCTestCase {
 
 	//Logik in einer separaten Funktion extrahiert, weil die showAddressAlert-Variable und die onAppear-Funktion privat sind und keinen Zugriff von außen ermöglichen!
 	func shouldShowAddressAlert(addressBook: AddressBook) -> Bool {
-		return addressBook.addresses.isEmpty
+		return addressBook.addressBook.isEmpty
 	}
 
 	//Funktion überprüfen
 	func testShouldShowAddressAlertWhenAddressBookIsEmpty() {
 		let addressBook = AddressBook()
-		addressBook.addresses = []
+		addressBook.addressBook = []
 
 		let result = shouldShowAddressAlert(addressBook: addressBook)
 
@@ -52,7 +52,7 @@ class ContentViewTests: XCTestCase {
 class QRCodeGenerationTests: XCTestCase {
 
 
-	let test = QRCodeView(address: Address(firstName: "", lastName: "", street: "", houseNumber: "", zip: ""))
+	let test = QRCodeView(address: Recipient(firstName: "", lastName: "", address: Address(street: "", houseNumber: "", zip: "")))
 
 	func testGenerateQRCodePerformance() {
 		let stringToEncode = "Some string to encode"
@@ -85,7 +85,7 @@ class AddressFormViewTests: XCTestCase {
 	// Test for the `toStringQrString` method of the `recipient` structure
 
 	func testRecipientToQRString() {
-		let recipientInstance = Address(
+		let recipientInstance = Recipient(
 			firstName: "John", lastName: "Doe",
 			street: "Baker Street",
 			houseNumber: "221B",
@@ -97,7 +97,7 @@ class AddressFormViewTests: XCTestCase {
 
 	func testAddresstoString() {
 
-		let recipientInstance = Address(
+		let recipientInstance = Recipient(
 			firstName: "John", lastName: "Doe",
 			street: "Baker Street",
 			houseNumber: "221B",
@@ -121,19 +121,19 @@ class AddressFormViewTests: XCTestCase {
 
 	func testAddressBookAddAndDelete() {
 		let addressBook = AddressBook()
-		let initialCount = addressBook.addresses.count
+		let initialCount = addressBook.addressBook.count
 
-		let newAddress = Address(
+		let newAddress = Recipient(
 			firstName: "John", lastName: "Doe",
 			street: "Baker Street",
 			houseNumber: "221B",
 			zip: "12345"
 		)
 		addressBook.addAddress(newAddress)
-		XCTAssertEqual(addressBook.addresses.count, initialCount + 1)
+		XCTAssertEqual(addressBook.addressBook.count, initialCount + 1)
 
 		addressBook.deleteAddress(at: [initialCount])
-		XCTAssertEqual(addressBook.addresses.count, initialCount)
+		XCTAssertEqual(addressBook.addressBook.count, initialCount)
 	}
 
 }
@@ -170,7 +170,7 @@ class AddressListViewTests: XCTestCase {
 
 	override func tearDown() {
 
-		for index in (0..<mockAddressBook.addresses.count).reversed() {
+		for index in (0..<mockAddressBook.addressBook.count).reversed() {
 			mockAddressBook.deleteAddress(at: IndexSet(integer: index))
 		}
 
@@ -182,13 +182,13 @@ class AddressListViewTests: XCTestCase {
 	// Test to check if addresses are correctly loaded from the addressBook
 	func testLoadAddresses() {
 
-		let testAddress = Address(firstName: "John", lastName: "Doe", street: "Main Street", houseNumber: "123", zip: "12345", label: "Garage")
+		let testAddress = Recipient(firstName: "John", lastName: "Doe", street: "Main Street", houseNumber: "123", zip: "12345", label: "Garage")
 		
 		mockAddressBook.addAddress(testAddress)
 
 
-		XCTAssertEqual(mockAddressBook.addresses.count, 1)
-		XCTAssertEqual(mockAddressBook.addresses.first?.firstName, "John")
+		XCTAssertEqual(mockAddressBook.addressBook.count, 1)
+		XCTAssertEqual(mockAddressBook.addressBook.first?.firstName, "John")
 	}
 
 	// Test to check the functionality of the delete method
@@ -196,7 +196,7 @@ class AddressListViewTests: XCTestCase {
 
 		addressListView.delete(at: IndexSet(integer: 0))
 
-		XCTAssertEqual(mockAddressBook.addresses.count, 0)
+		XCTAssertEqual(mockAddressBook.addressBook.count, 0)
 	}
 
 	func testAddAndDeleteAddresses() {
@@ -205,17 +205,17 @@ class AddressListViewTests: XCTestCase {
 
 
 		for _ in 1...amount {
-			let testAddress = Address(firstName: "John", lastName: "Doe", street: "Main Street", houseNumber: "123", zip: "12345", label: "Garage")
+			let testAddress = Recipient(firstName: "John", lastName: "Doe", street: "Main Street", houseNumber: "123", zip: "12345", label: "Garage")
 			mockAddressBook.addAddress(testAddress)
 		}
 
-		XCTAssertEqual(mockAddressBook.addresses.count, amount)
+		XCTAssertEqual(mockAddressBook.addressBook.count, amount)
 
-		for index in (0..<mockAddressBook.addresses.count).reversed() {
+		for index in (0..<mockAddressBook.addressBook.count).reversed() {
 			addressListView.delete(at: IndexSet(integer: index))
 		}
 
-		XCTAssertEqual(mockAddressBook.addresses.count, 0)
+		XCTAssertEqual(mockAddressBook.addressBook.count, 0)
 
 		let endTime = Date()
 		let timeInterval = endTime.timeIntervalSince(startTime)

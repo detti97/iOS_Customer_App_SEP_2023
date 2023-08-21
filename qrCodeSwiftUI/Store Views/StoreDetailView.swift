@@ -51,7 +51,7 @@ struct StoreDetailView: View {
 					VStack(alignment: .trailing, spacing: 4) {
 						Text(store.owner)
 							.accessibility(identifier: "storeOwnerLabel")
-						Text("\(store.street) \(store.houseNumber)")
+						Text("\(store.address.street) \(store.address.houseNumber)")
 							.accessibility(identifier: "storeAddressLabel")
 						Text(store.telephone)
 							.accessibility(identifier: "storePhoneLabel")
@@ -105,7 +105,7 @@ struct StoreDetail_Previews: PreviewProvider {
 
 			let datamanager = DataManager()
 
-			let store = StoreInfo(id: "1", name: "Apple Store", owner: "Steve Jobs", street: "Kaiserstraße", houseNumber: "12", zip: "12345", city: "Lingen", telephone: "0123456789", email: "test@osna.de", logo: "https://img.freepik.com/freie-ikonen/mac-os_318-10374.jpg", backgroundImage: "https://wallpapers.com/wp-content/themes/wallpapers.com/src/splash-n.jpg", coordinates: StoreInfo.Coordinates(latitude: 37.7749, longitude: -122.4194))
+			let store = StoreInfo(id: "1", name: "Apple Store", owner: "Steve Jobs", address: Address(street: "Kaiserstraße", houseNumber: "12", zip: "12345", city: ""), telephone: "0123456789", email: "test@osna.de", logo: "https://img.freepik.com/freie-ikonen/mac-os_318-10374.jpg", backgroundImage: "https://wallpapers.com/wp-content/themes/wallpapers.com/src/splash-n.jpg", coordinates: StoreInfo.Coordinates(latitude: 37.7749, longitude: -122.4194))
 
 
 			StoreDetailView(dataManager: datamanager, store: store)

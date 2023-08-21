@@ -25,7 +25,7 @@ class DataManager: ObservableObject {
 				}
 				return
 			}
-			print(response ?? "")
+			print("Response data:", String(data: data!, encoding: .utf8) ?? "")
 			if let data = data {
 				print(data)
 				do {

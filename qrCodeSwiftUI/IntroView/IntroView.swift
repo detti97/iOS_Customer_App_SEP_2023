@@ -147,7 +147,7 @@ struct IntroView: View {
 
 						VStack{
 
-							AddressFormView(addressBook: addressBook, success: $success)
+							addressFormView(addressBook: addressBook, success: $success)
 						}
 						.onChange(of: success) { newValue in
 							isActiveThirdStep = true

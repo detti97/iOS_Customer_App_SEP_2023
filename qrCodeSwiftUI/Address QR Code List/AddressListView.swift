@@ -11,13 +11,13 @@ struct AddressListView: View {
 	@ObservedObject var addressBook: AddressBook
 	@State private var showingAddAddressSheet = false
 	@State static var returnedBool: Bool?
-	@State private var selectedAddress: Address?
+	@State private var selectedAddress: Recipient?
 
 	var body: some View {
 			NavigationView {
 				VStack {
 					List {
-						ForEach(addressBook.addresses) { address in
+						ForEach(addressBook.addressBook) { address in
 							Button(action: {
 								selectedAddress = address // Setze die ausgewählte Adresse
 							}) {
@@ -65,7 +65,7 @@ struct AddressListView: View {
 struct AddressListView_Previews: PreviewProvider {
 	static var previews: some View {
 		let addressBook = AddressBook()
-		addressBook.addAddress(Address(firstName: "Doe", lastName: "John", street: "Main Street", houseNumber: "123", zip: "12345"))
+		addressBook.addAddress(Recipient(firstName: "Doe", lastName: "John", address: Address(street: "Main Street", houseNumber: "123", zip: "12345", city: "")))
 		return AddressListView(addressBook: addressBook)
 	}
 }
