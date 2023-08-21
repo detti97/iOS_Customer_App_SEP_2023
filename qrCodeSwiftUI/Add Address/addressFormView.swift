@@ -16,10 +16,10 @@ struct FieldTapped{
 }
 
 
-struct AddressFormView: View {
+struct addressFormView: View {
 
 	@ObservedObject var addressBook: AddressBook
-	@State var address = Address(firstName: "", lastName: "", street: "", houseNumber: "", zip: "")
+	@State var address = Recipient(firstName: "", lastName: "", address: Address(street: "", houseNumber: "", zip: "49809", city: "lingen"))
 	@Binding var success: Bool
 	@State var label = ""
 
@@ -98,7 +98,7 @@ struct AddressFormView: View {
 						focusField = .street
 					}
 
-				TextField("Straße", text: $address.street)
+				TextField("Straße", text: $address.address.street)
 					.frame(height: 30)
 					.frame(maxWidth: .infinity)
 					.padding(10)
@@ -114,7 +114,7 @@ struct AddressFormView: View {
 
 
 					}
-					.onChange(of: address.street) { _ in
+					.onChange(of: address.address.street) { _ in
 
 						fields[2].textEntert = true
 					}
@@ -127,7 +127,7 @@ struct AddressFormView: View {
 						focusField = .housenumber
 					}
 
-				TextField("Hausnummer", text: $address.houseNumber)
+				TextField("Hausnummer", text: $address.address.houseNumber)
 					.frame(height: 30)
 					.frame(maxWidth: .infinity)
 					.padding(10)
@@ -141,7 +141,7 @@ struct AddressFormView: View {
 						fields[3].fieldTapped = true
 						fields[3].turnRed = false
 					}
-					.onChange(of: address.houseNumber) { _ in
+					.onChange(of: address.address.houseNumber) { _ in
 
 						fields[3].textEntert = true
 					}
@@ -153,7 +153,7 @@ struct AddressFormView: View {
 					.onSubmit {
 						focusField = .zip
 					}
-				Picker("Postleitzahl", selection: $address.zip) {
+				Picker("Postleitzahl", selection: $address.address.zip) {
 					ForEach(zipCodes, id: \.self) { plz in
 						Text(plz)
 					}
@@ -207,7 +207,7 @@ struct AddressFormView: View {
 					.cornerRadius(18)
 					.padding()
 				}
-				.disabled(address.lastName.isEmpty || address.street.isEmpty || address.houseNumber.isEmpty || address.zip.isEmpty)
+				.disabled(address.lastName.isEmpty || address.address.street.isEmpty || address.address.houseNumber.isEmpty || address.address.zip.isEmpty)
 				.onTapGesture{
 					checkForEmptyFieldFinal()
 				}
@@ -253,9 +253,9 @@ struct AddressFormView: View {
 struct AddressFormView_Previews: PreviewProvider {
     static var previews: some View {
 
-		let address = Address(firstName: "", lastName: "", street: "", houseNumber: "", zip: "")
+		let address = Recipient(firstName: "", lastName: "", address: Address(street: "", houseNumber: "", zip: "", city: ""))
 		let success = false
 
-		AddressFormView(addressBook: AddressBook(), address: address, success: Binding.constant(success)  )
+		addressFormView(addressBook: AddressBook(), address: address, success: Binding.constant(success)  )
     }
 }
