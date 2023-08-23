@@ -42,7 +42,7 @@ struct ContentView: View {
 								Label("Einstellungen", systemImage: "gear")
 									.foregroundColor(.white)
 							}
-						
+
 					}
 					.onAppear {
 						let appearance = UITabBarAppearance()

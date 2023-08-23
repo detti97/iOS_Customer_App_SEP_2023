@@ -33,7 +33,7 @@ struct Recipient: Identifiable, Codable {
 			return result
 		}
 	func toStringQrString() -> String {
-		let result = "\(lastName)&\(firstName)&\(address.street)&\(address.houseNumber)&\(address.zip)"
+		let result = "\(lastName)&\(firstName)&\(address.street)&\(address.houseNumber)&\(address.zip)&Lingen"
 			return result
 		}
 }

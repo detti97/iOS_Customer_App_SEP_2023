@@ -98,6 +98,7 @@
 		60991C4B29DF72DB003F148B /* StoreRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRowView.swift; sourceTree = "<group>"; };
 		60991C4D29DF7B6C003F148B /* StoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListView.swift; sourceTree = "<group>"; };
 		60991C4F29DF7C06003F148B /* StoreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailView.swift; sourceTree = "<group>"; };
+		60E70F0B2A935AA80036A2F0 /* testView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +181,7 @@
 		607E6A3D29D8EF3700A12B32 = {
 			isa = PBXGroup;
 			children = (
+				60E70F0B2A935AA80036A2F0 /* testView.swift */,
 				6084D5932A8D961F005AC588 /* qrCodeSwiftUI.xctestplan */,
 				6084D5812A8D6AF5005AC588 /* qrCodeSwiftUNIT-Tests.xctestplan */,
 				607E6A4829D8EF3700A12B32 /* qrCodeSwiftUI */,
