@@ -47,30 +47,27 @@ struct SettingsView: View {
 								UserDefaults.standard.removeObject(forKey: "IntroState")
 
 							}){
-								Text("Intro Reset")
+								Text("Intro Reset - nur für Demo")
 									.foregroundColor(.red)
 							}
-							Section() {
-								Toggle(isOn: $isDarkMode) {
-									Text("Dark Mode")
-								}
-							}
+							Button(action: {
+										   showInfo.toggle()
+									   }) {
+										   HStack{
+
+											   Text("Impressum")
+											   Image(systemName: "info.circle")
+										   }
+
+									   }
+									   .sheet(isPresented: $showInfo) {
+										   ImpressumView()
+									   }
 						}
 					}
 
 				}
 				VStack(alignment: .trailing){
-
-					Button(action: {
-								   showInfo.toggle()
-							   }) {
-								   Image(systemName: "info.circle")
-									   .font(.system(size: 30))
-							   }
-							   .sheet(isPresented: $showInfo) {
-								   ImpressumView()
-							   }
-
 
 
 				}

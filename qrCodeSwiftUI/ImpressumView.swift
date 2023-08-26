@@ -13,7 +13,7 @@ struct ImpressumView: View {
 		VStack{
 
 			Image("lieferlogo")
-				.position(x:200, y: 40)
+
 
 			VStack(alignment: .center, spacing: 20) {
 
@@ -42,7 +42,6 @@ struct ImpressumView: View {
 				)
 
 			}
-			.position(x: 215, y: -40)
 
 			VStack{
 
@@ -52,7 +51,7 @@ struct ImpressumView: View {
 					.frame(width: 300)
 
 			}
-			.position(x: 210, y: 220)
+
 
 		}
 
