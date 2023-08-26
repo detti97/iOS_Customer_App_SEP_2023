@@ -98,7 +98,6 @@
 		60991C4B29DF72DB003F148B /* StoreRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRowView.swift; sourceTree = "<group>"; };
 		60991C4D29DF7B6C003F148B /* StoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListView.swift; sourceTree = "<group>"; };
 		60991C4F29DF7C06003F148B /* StoreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailView.swift; sourceTree = "<group>"; };
-		60E70F0B2A935AA80036A2F0 /* testView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,47 +142,201 @@
 		5264A2FD2A838EBB00EE3258 /* qrCodeSwiftUNIT-Tests */ = {
 			isa = PBXGroup;
 			children = (
+				6084D5812A8D6AF5005AC588 /* qrCodeSwiftUNIT-Tests.xctestplan */,
 				5264A2FE2A838EBB00EE3258 /* qrCodeSwiftUNIT_Tests.swift */,
 			);
 			path = "qrCodeSwiftUNIT-Tests";
 			sourceTree = "<group>";
 		};
-		600B17662A5D6E1100CA28BE /* IntroView */ = {
+		6042879829E0574F009798B5 /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				60545B5F2A9A64DF00539157 /* Views */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
+		60545B4C2A9A5C2C00539157 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6084D5722A8D5519005AC588 /* ImpressumView.swift */,
+				6073C2CA2A52123D002C9CDB /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		60545B4E2A9A5EA400539157 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				60545B4F2A9A5EB700539157 /* Common */,
+				60545B552A9A601900539157 /* AddressList */,
+				60545B542A9A5F1000539157 /* Explore */,
+				60545B522A9A5EF800539157 /* Intro */,
+				60545B532A9A5F0300539157 /* Settings */,
+				6042879829E0574F009798B5 /* QRCode */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		60545B4F2A9A5EB700539157 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				60545B512A9A5ED900539157 /* Views */,
+				60545B502A9A5ECD00539157 /* Models */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		60545B502A9A5ECD00539157 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		60545B512A9A5ED900539157 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				60991C3929DED400003F148B /* AddressAddView.swift */,
+				60991C3B29DED5EC003F148B /* CustomTextFieldStyleView.swift */,
+				6084D5702A8D1D6E005AC588 /* addressFormView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		60545B522A9A5EF800539157 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				60545B582A9A62DD00539157 /* Models */,
+				60545B592A9A62F300539157 /* Views */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		60545B532A9A5F0300539157 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				60545B4C2A9A5C2C00539157 /* Views */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		60545B542A9A5F1000539157 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				60545B5C2A9A63DA00539157 /* Actions */,
+				60545B572A9A607400539157 /* Models */,
+				60545B562A9A606A00539157 /* Views */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		60545B552A9A601900539157 /* AddressList */ = {
+			isa = PBXGroup;
+			children = (
+				60545B5B2A9A633600539157 /* Models */,
+				60545B5A2A9A632F00539157 /* Views */,
+			);
+			path = AddressList;
+			sourceTree = "<group>";
+		};
+		60545B562A9A606A00539157 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				60991C4F29DF7C06003F148B /* StoreDetailView.swift */,
+				60991C3F29DF35DF003F148B /* CircleImage.swift */,
+				60991C4929DF728D003F148B /* MapView.swift */,
+				60991C4B29DF72DB003F148B /* StoreRowView.swift */,
+				60991C4D29DF7B6C003F148B /* StoreListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		60545B572A9A607400539157 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6084D56D2A8968F2005AC588 /* AddressManager.swift */,
+				60991C4429DF6E23003F148B /* Stores.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		60545B582A9A62DD00539157 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		60545B592A9A62F300539157 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				600B17672A5D6E2200CA28BE /* IntroView.swift */,
-				6084D5572A602F46005AC588 /* SplashScreenView.swift */,
 			);
-			path = IntroView;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		6042879829E0574F009798B5 /* Address QR Code List */ = {
+		60545B5A2A9A632F00539157 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				60991C3D29DEDFDC003F148B /* AddressListView.swift */,
+				60991C3729DE39F8003F148B /* AddressRowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		60545B5B2A9A633600539157 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		60545B5C2A9A63DA00539157 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				60991C4629DF7049003F148B /* ModelData.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		60545B5D2A9A642B00539157 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				60545B4E2A9A5EA400539157 /* Features */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		60545B5E2A9A643800539157 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				607E6A4B29D8EF3700A12B32 /* ContentView.swift */,
+				607E6A4929D8EF3700A12B32 /* qrCodeSwiftUIApp.swift */,
+				6084D5572A602F46005AC588 /* SplashScreenView.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		60545B5F2A9A64DF00539157 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				6035373629DA287F008C7881 /* QRCodeView.swift */,
-				60991C3729DE39F8003F148B /* AddressRowView.swift */,
-				60991C3D29DEDFDC003F148B /* AddressListView.swift */,
 			);
-			path = "Address QR Code List";
+			path = Views;
 			sourceTree = "<group>";
 		};
-		6042879929E057F9009798B5 /* Add Address */ = {
+		60545B602A9A656F00539157 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				60991C3B29DED5EC003F148B /* CustomTextFieldStyleView.swift */,
-				60991C3929DED400003F148B /* AddressAddView.swift */,
-				6084D5702A8D1D6E005AC588 /* addressFormView.swift */,
-				6084D56D2A8968F2005AC588 /* AddressManager.swift */,
+				607E6A4D29D8EF3800A12B32 /* Assets.xcassets */,
 			);
-			path = "Add Address";
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		607E6A3D29D8EF3700A12B32 = {
 			isa = PBXGroup;
 			children = (
-				60E70F0B2A935AA80036A2F0 /* testView.swift */,
-				6084D5932A8D961F005AC588 /* qrCodeSwiftUI.xctestplan */,
-				6084D5812A8D6AF5005AC588 /* qrCodeSwiftUNIT-Tests.xctestplan */,
 				607E6A4829D8EF3700A12B32 /* qrCodeSwiftUI */,
 				5264A2FD2A838EBB00EE3258 /* qrCodeSwiftUNIT-Tests */,
 				6084D5892A8D87F2005AC588 /* CustomerAppUITests */,
@@ -206,16 +359,9 @@
 		607E6A4829D8EF3700A12B32 /* qrCodeSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				607E6A4929D8EF3700A12B32 /* qrCodeSwiftUIApp.swift */,
-				607E6A4B29D8EF3700A12B32 /* ContentView.swift */,
-				6073C2CA2A52123D002C9CDB /* SettingsView.swift */,
-				6084D5722A8D5519005AC588 /* ImpressumView.swift */,
-				600B17662A5D6E1100CA28BE /* IntroView */,
-				60991C4329DF6E0B003F148B /* Model */,
-				6042879929E057F9009798B5 /* Add Address */,
-				60991C4829DF7263003F148B /* Store Views */,
-				6042879829E0574F009798B5 /* Address QR Code List */,
-				607E6A4D29D8EF3800A12B32 /* Assets.xcassets */,
+				60545B5D2A9A642B00539157 /* Code */,
+				60545B602A9A656F00539157 /* Resources */,
+				60545B5E2A9A643800539157 /* SupportingFiles */,
 				607E6A4F29D8EF3800A12B32 /* Preview Content */,
 			);
 			path = qrCodeSwiftUI;
@@ -232,31 +378,11 @@
 		6084D5892A8D87F2005AC588 /* CustomerAppUITests */ = {
 			isa = PBXGroup;
 			children = (
+				6084D5932A8D961F005AC588 /* qrCodeSwiftUI.xctestplan */,
 				6084D58A2A8D87F2005AC588 /* CustomerAppUITests.swift */,
 				6084D58C2A8D87F2005AC588 /* CustomerAppUITestsLaunchTests.swift */,
 			);
 			path = CustomerAppUITests;
-			sourceTree = "<group>";
-		};
-		60991C4329DF6E0B003F148B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				60991C4429DF6E23003F148B /* Stores.swift */,
-				60991C4629DF7049003F148B /* ModelData.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		60991C4829DF7263003F148B /* Store Views */ = {
-			isa = PBXGroup;
-			children = (
-				60991C3F29DF35DF003F148B /* CircleImage.swift */,
-				60991C4929DF728D003F148B /* MapView.swift */,
-				60991C4B29DF72DB003F148B /* StoreRowView.swift */,
-				60991C4D29DF7B6C003F148B /* StoreListView.swift */,
-				60991C4F29DF7C06003F148B /* StoreDetailView.swift */,
-			);
-			path = "Store Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
