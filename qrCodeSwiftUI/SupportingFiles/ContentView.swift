@@ -37,7 +37,7 @@ struct ContentView: View {
 							.tabItem {
 								Label("Erkunden", systemImage: "location")
 							}
-						SettingsView(introState: $introshown)
+						SettingsView(introState: $introshown, addressBook: addressBook)
 							.tabItem {
 								Label("Einstellungen", systemImage: "gear")
 									.foregroundColor(.white)

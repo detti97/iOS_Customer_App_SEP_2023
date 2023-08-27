@@ -11,9 +11,10 @@ struct SettingsView: View {
 
 	@State private var showEditAddress = false
 	@State private var showInfo = false
-	@AppStorage("isDarkMode") private var isDarkMode = false
 	@State static var returnedBool: Bool?
+	@State private var showingDeleteConfirmation = false
 	@Binding var introState: Bool
+	@ObservedObject var addressBook: AddressBook
 
 	var body: some View {
 
@@ -35,12 +36,22 @@ struct SettingsView: View {
 						}
 						Section(header: Text("Daten löschen")){
 							Button(action: {
-								DispatchQueue.main.async {
-									deleteAll()
-								}
+								showingDeleteConfirmation = true
 							}){
 								Text("Alle Adressen löschen")
 									.foregroundColor(Color.red)
+							}
+							.alert(isPresented: $showingDeleteConfirmation) {
+								Alert(
+									title: Text("Alle Adressen löschen"),
+									message: Text("Sind Sie sicher, dass Sie alle Adressen löschen möchten?"),
+									primaryButton: .destructive(Text("Löschen"), action: {
+										DispatchQueue.main.async {
+											deleteAll()
+										}
+									}),
+									secondaryButton: .cancel()
+								)
 							}
 							Button(action:{
 								introState = false
@@ -78,13 +89,15 @@ struct SettingsView: View {
 	}
 
 	private func deleteAll() {
-		UserDefaults.standard.removeObject(forKey: "addressBook")
-		UserDefaults.standard.synchronize()
+		addressBook.deleteAllAddresses()
 	}
 
 	struct SettingsView_Previews: PreviewProvider {
 		static var previews: some View {
-			SettingsView(introState: .constant(false))
+
+			let addressBook = AddressBook()
+
+			SettingsView(introState: .constant(false), addressBook: addressBook)
 		}
 	}
 }

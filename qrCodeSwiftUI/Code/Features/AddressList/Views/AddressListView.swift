@@ -11,22 +11,22 @@ struct AddressListView: View {
 	@ObservedObject var addressBook: AddressBook
 	@State private var showingAddAddressSheet = false
 	@State static var returnedBool: Bool?
-	@State private var selectedAddress: Recipient?
+	@State private var selectedRecipient: Recipient?
 
 	var body: some View {
 			NavigationView {
 				VStack {
-					List {
-						ForEach(addressBook.addressBook) { address in
-							Button(action: {
-								selectedAddress = address // Setze die ausgewählte Adresse
-							}) {
-								AddressRowView(adressString: (address.toString()))
+						List {
+							ForEach(addressBook.addressBook) { recipient in
+								Button(action: {
+									selectedRecipient = recipient // Setze die ausgewählte Adresse
+								}) {
+									AddressRowView(recipient: recipient)
+								}
 							}
+							.onDelete(perform: delete)
 						}
-						.onDelete(perform: delete)
-					}
-					.listStyle(InsetListStyle())
+						.listStyle(InsetListStyle())
 
 					Button(action: {
 						showingAddAddressSheet = true
@@ -42,7 +42,7 @@ struct AddressListView: View {
 					.sheet(isPresented: $showingAddAddressSheet, content: {
 						AddressAddView(addressBook: addressBook)
 					})
-					.sheet(item: $selectedAddress) { address in
+					.sheet(item: $selectedRecipient) { address in
 						QRCodeView(address: address)
 					}
 				}

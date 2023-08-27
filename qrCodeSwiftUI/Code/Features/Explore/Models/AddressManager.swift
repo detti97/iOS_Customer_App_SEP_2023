@@ -25,11 +25,8 @@ struct Recipient: Identifiable, Codable {
 	var label: String?
 
 	func toString() -> String {
-		var result = "\(lastName) \(firstName)\n\(address.street) \(address.houseNumber)\n"
+		var result = "\(lastName) \(firstName)"
 
-			if let label = label {
-				result += "\(label)"
-			}
 			return result
 		}
 	func toStringQrString() -> String {
@@ -75,4 +72,9 @@ class AddressBook: ObservableObject {
 			print("Error saving data: \(error)")
 		}
 	}
+	
+	func deleteAllAddresses() {
+		   addressBook.removeAll()
+		   saveData()
+	   }
 }
