@@ -10,7 +10,7 @@ import SwiftUI
 struct addressFormView: View {
 
 	@ObservedObject var addressBook: AddressBook
-	@State var address = Recipient(firstName: "", lastName: "", address: Address(street: "", houseNumber: "", zip: "49809", city: "lingen"))
+	@State var recipient = Recipient(firstName: "", lastName: "", address: Address(street: "", houseNumber: "", zip: "49809", city: "lingen"))
 	@Binding var success: Bool
 	@State var label = ""
 	@State private var showSuccessAlert = false
@@ -35,7 +35,7 @@ struct addressFormView: View {
 
 			VStack{
 
-				TextField("Vorname", text: $address.lastName)
+				TextField("Vorname", text: $recipient.lastName)
 					.frame(height: 30)
 					.frame(maxWidth: .infinity)
 					.padding(10)
@@ -46,7 +46,7 @@ struct addressFormView: View {
 						fields[0].turnRed = false
 
 					}
-					.onChange(of: address.lastName) { _ in
+					.onChange(of: recipient.lastName) { _ in
 
 						fields[0].textEntert = true
 					}
@@ -60,7 +60,7 @@ struct addressFormView: View {
 						focusField = .name
 					}
 
-				TextField("Nachname", text: $address.firstName)
+				TextField("Nachname", text: $recipient.firstName)
 					.frame(height: 30)
 					.padding(10)
 					.frame(maxWidth: .infinity)
@@ -72,7 +72,7 @@ struct addressFormView: View {
 
 
 					}
-					.onChange(of: address.firstName) { _ in
+					.onChange(of: recipient.firstName) { _ in
 
 						fields[1].textEntert = true
 					}
@@ -85,7 +85,7 @@ struct addressFormView: View {
 						focusField = .street
 					}
 
-				TextField("Straße", text: $address.address.street)
+				TextField("Straße", text: $recipient.address.street)
 					.frame(height: 30)
 					.frame(maxWidth: .infinity)
 					.padding(10)
@@ -101,7 +101,7 @@ struct addressFormView: View {
 
 
 					}
-					.onChange(of: address.address.street) { _ in
+					.onChange(of: recipient.address.street) { _ in
 
 						fields[2].textEntert = true
 					}
@@ -114,7 +114,7 @@ struct addressFormView: View {
 						focusField = .housenumber
 					}
 
-				TextField("Hausnummer", text: $address.address.houseNumber)
+				TextField("Hausnummer", text: $recipient.address.houseNumber)
 					.frame(height: 30)
 					.frame(maxWidth: .infinity)
 					.padding(10)
@@ -128,10 +128,15 @@ struct addressFormView: View {
 						fields[3].fieldTapped = true
 						fields[3].turnRed = false
 					}
-					.onChange(of: address.address.houseNumber) { _ in
+					.onChange(of: recipient.address.houseNumber) { _ in
 
 						fields[3].textEntert = true
 					}
+					.onChange(of: recipient.address.houseNumber) { newValue in
+									if newValue.count > 5 {
+										recipient.address.houseNumber = String(newValue.prefix(5))
+									}
+								}
 					.overlay(RoundedRectangle(cornerRadius: 24)
 						.stroke(fields[3].turnRed ? Color.red : Color.gray, lineWidth: 3)
 					)
@@ -140,7 +145,7 @@ struct addressFormView: View {
 					.onSubmit {
 						focusField = .zip
 					}
-				Picker("Postleitzahl", selection: $address.address.zip) {
+				Picker("Postleitzahl", selection: $recipient.address.zip) {
 					ForEach(zipCodes, id: \.self) { plz in
 						Text(plz)
 					}
@@ -174,9 +179,9 @@ struct addressFormView: View {
 
 				Button(action: {
 
-					address.label = label
+					recipient.label = label
 
-					addressBook.addAddress(address)
+					addressBook.addAddress(recipient)
 
 					showSuccessAlert = true
 					success = true
@@ -194,7 +199,7 @@ struct addressFormView: View {
 					.cornerRadius(18)
 					.padding()
 				}
-				.disabled(address.lastName.isEmpty || address.address.street.isEmpty || address.address.houseNumber.isEmpty || address.address.zip.isEmpty)
+				.disabled(recipient.lastName.isEmpty || recipient.address.street.isEmpty || recipient.address.houseNumber.isEmpty || recipient.address.zip.isEmpty)
 				.onTapGesture{
 					checkForEmptyFieldFinal()
 				}
@@ -243,7 +248,7 @@ struct AddressFormView_Previews: PreviewProvider {
 		let address = Recipient(firstName: "", lastName: "", address: Address(street: "", houseNumber: "", zip: "", city: ""))
 		let success = false
 
-		addressFormView(addressBook: AddressBook(), address: address, success: Binding.constant(success)  )
+		addressFormView(addressBook: AddressBook(), recipient: address, success: Binding.constant(success)  )
     }
 }
 

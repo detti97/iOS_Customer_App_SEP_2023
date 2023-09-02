@@ -52,6 +52,10 @@ class AddressBook: ObservableObject {
 		saveData()
 	}
 
+	func editAddress(at indexSet: IndexSet) {
+		
+	}
+
 	func loadData() {
 		if let data = UserDefaults.standard.data(forKey: "addressBook") {
 			do {

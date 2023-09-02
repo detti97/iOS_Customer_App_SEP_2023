@@ -17,7 +17,18 @@ class DataManager: ObservableObject {
 			return
 		}
 
-		URLSession.shared.dataTask(with: url) { data, response, error in
+		var request = URLRequest(url: url)
+		request.timeoutInterval = 2.0
+
+		let task = URLSession.shared.dataTask(with: request) { data, response, error in
+			if let error = error as NSError?, error.code == NSURLErrorTimedOut {
+				DispatchQueue.main.async {
+					self.errorLoading = true
+					print("Zeitüberschreitung beim Laden der Daten")
+				}
+				return
+			}
+
 			if error != nil {
 				DispatchQueue.main.async {
 					self.errorLoading = true
@@ -40,11 +51,12 @@ class DataManager: ObservableObject {
 				} catch {
 					DispatchQueue.main.async {
 						self.errorLoading = true
-						print("Fehler beim decodiern der Daten")
+						print("Fehler beim Decodieren der Daten")
 					}
 				}
 			}
-		}.resume()
+		}
+		task.resume()
 	}
 
 }

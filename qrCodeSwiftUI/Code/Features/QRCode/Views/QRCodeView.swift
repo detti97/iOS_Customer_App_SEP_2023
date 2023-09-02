@@ -64,7 +64,7 @@ struct QRCodeView: View {
 
 							VStack (alignment: .trailing, spacing: 10){
 
-								Image(uiImage: generateQRCode(from: address.toStringQrString()))
+								Image(uiImage: QRCodeView.generateQRCode(from: address.toStringQrString()))
 									.resizable()
 									.interpolation(.none)
 									.frame(width: 200, height: 200)
@@ -152,7 +152,7 @@ struct QRCodeView: View {
 
 
 
-	func generateQRCode(from string: String) -> UIImage {
+	static func generateQRCode(from string: String) -> UIImage {
 
 		let context = CIContext()
 		let filter = CIFilter.qrCodeGenerator()

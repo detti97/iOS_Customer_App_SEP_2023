@@ -12,6 +12,7 @@ struct AddressListView: View {
 	@State private var showingAddAddressSheet = false
 	@State static var returnedBool: Bool?
 	@State private var selectedRecipient: Recipient?
+	@State private var isActiveAddressEdit = false
 
 	var body: some View {
 			NavigationView {
@@ -19,14 +20,14 @@ struct AddressListView: View {
 						List {
 							ForEach(addressBook.addressBook) { recipient in
 								Button(action: {
-									selectedRecipient = recipient // Setze die ausgewählte Adresse
+									selectedRecipient = recipient
 								}) {
-									AddressRowView(recipient: recipient)
+									AddressRowView(recipient: recipient, isActiveAddressEdit: $isActiveAddressEdit)
 								}
 							}
 							.onDelete(perform: delete)
 						}
-						.listStyle(InsetListStyle())
+						.listStyle(.automatic)
 
 					Button(action: {
 						showingAddAddressSheet = true
@@ -45,6 +46,7 @@ struct AddressListView: View {
 					.sheet(item: $selectedRecipient) { address in
 						QRCodeView(address: address)
 					}
+
 				}
 				.navigationBarTitle("Addresses")
 			.navigationBarItems(trailing: EditButton())
