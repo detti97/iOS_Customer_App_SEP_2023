@@ -212,11 +212,23 @@ struct IntroView: View {
 
 				}
 			}
+			.onAppear {
+
+				if getIntroState() != nil {
+
+					introState = getIntroState()!
+
+				}
+			}
 		}
 
 	func saveIntroState(_ introState: Bool) {
 		UserDefaults.standard.set(introState, forKey: "IntroState")
 		
+	}
+
+	func getIntroState() -> Bool? {
+		return UserDefaults.standard.bool(forKey: "IntroState")
 	}
 
 		struct IntroView_Previews: PreviewProvider {

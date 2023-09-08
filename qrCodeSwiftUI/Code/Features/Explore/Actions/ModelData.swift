@@ -11,8 +11,38 @@ class DataManager: ObservableObject {
 	@Published var errorLoading = false
 	@Published var stores: [StoreInfo] = []
 
-	func loadData() {
-		guard let url = URL(string: "http://131.173.65.77:8080/api/store-details") else {
+	enum api_endpints {
+
+		static let storeDetail = "http://131.173.65.77:8080/api/store-details"
+
+
+	}
+
+
+
+	func decodeResponse(_ data: Data?) {
+		if let data = data {
+			print(data)
+			do {
+				let decoder = JSONDecoder()
+				let loadedData = try decoder.decode([StoreInfo].self, from: data)
+
+				DispatchQueue.main.async {
+					self.stores = loadedData
+					self.errorLoading = false
+					print(loadedData)
+				}
+			} catch {
+				DispatchQueue.main.async {
+					self.errorLoading = true
+					print("Fehler beim Decodieren der Daten")
+				}
+			}
+		}
+	}
+
+	func loadData(url: String) {
+		guard let url = URL(string: url) else {
 			print("Fehler")
 			return
 		}
@@ -37,24 +67,7 @@ class DataManager: ObservableObject {
 				return
 			}
 			print("Response data:", String(data: data!, encoding: .utf8) ?? "")
-			if let data = data {
-				print(data)
-				do {
-					let decoder = JSONDecoder()
-					let loadedData = try decoder.decode([StoreInfo].self, from: data)
-
-					DispatchQueue.main.async {
-						self.stores = loadedData
-						self.errorLoading = false
-						print(loadedData)
-					}
-				} catch {
-					DispatchQueue.main.async {
-						self.errorLoading = true
-						print("Fehler beim Decodieren der Daten")
-					}
-				}
-			}
+			self.decodeResponse(data)
 		}
 		task.resume()
 	}

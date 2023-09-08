@@ -41,6 +41,7 @@ struct SettingsView: View {
 								Text("Alle Adressen löschen")
 									.foregroundColor(Color.red)
 							}
+							.accessibilityLabel("deleteAll")
 							.alert(isPresented: $showingDeleteConfirmation) {
 								Alert(
 									title: Text("Alle Adressen löschen"),
@@ -54,26 +55,25 @@ struct SettingsView: View {
 								)
 							}
 							Button(action:{
-								introState = false
-								UserDefaults.standard.removeObject(forKey: "IntroState")
+								removeIntroState()
 
 							}){
 								Text("Intro Reset - nur für Demo")
 									.foregroundColor(.red)
 							}
 							Button(action: {
-										   showInfo.toggle()
-									   }) {
-										   HStack{
+								showInfo.toggle()
+							}) {
+								HStack{
 
-											   Text("Impressum")
-											   Image(systemName: "info.circle")
-										   }
+									Text("Impressum")
+									Image(systemName: "info.circle")
+								}
 
-									   }
-									   .sheet(isPresented: $showInfo) {
-										   ImpressumView()
-									   }
+							}
+							.sheet(isPresented: $showInfo) {
+								ImpressumView()
+							}
 						}
 					}
 
@@ -90,6 +90,14 @@ struct SettingsView: View {
 
 	private func deleteAll() {
 		addressBook.deleteAllAddresses()
+
+	}
+
+	private func removeIntroState(){
+
+		UserDefaults.standard.removeObject(forKey: "IntroState")
+		introState = false
+
 	}
 
 	struct SettingsView_Previews: PreviewProvider {

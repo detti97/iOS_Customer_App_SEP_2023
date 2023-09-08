@@ -26,7 +26,6 @@ struct Recipient: Identifiable, Codable {
 
 	func toString() -> String {
 		var result = "\(lastName) \(firstName)"
-
 			return result
 		}
 	func toStringQrString() -> String {
@@ -50,10 +49,6 @@ class AddressBook: ObservableObject {
 	func deleteAddress(at indexSet: IndexSet) {
 		addressBook.remove(atOffsets: indexSet)
 		saveData()
-	}
-
-	func editAddress(at indexSet: IndexSet) {
-		
 	}
 
 	func loadData() {

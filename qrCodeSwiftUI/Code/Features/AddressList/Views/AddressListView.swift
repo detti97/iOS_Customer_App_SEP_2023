@@ -13,43 +13,58 @@ struct AddressListView: View {
 	@State static var returnedBool: Bool?
 	@State private var selectedRecipient: Recipient?
 	@State private var isActiveAddressEdit = false
+	@State private var listElementCounter = 0
 
 	var body: some View {
 			NavigationView {
-				VStack {
-						List {
-							ForEach(addressBook.addressBook) { recipient in
-								Button(action: {
-									selectedRecipient = recipient
-								}) {
-									AddressRowView(recipient: recipient, isActiveAddressEdit: $isActiveAddressEdit)
-								}
+				ZStack(alignment: .bottom) {
+					List {
+						ForEach(Array(addressBook.addressBook.enumerated()), id: \.element.id) { (index, recipient) in
+							Button(action: {
+								selectedRecipient = recipient
+							}) {
+								AddressRowView(recipient: recipient, isActiveAddressEdit: $isActiveAddressEdit)
 							}
-							.onDelete(perform: delete)
+							.accessibilityLabel("\(index + 1)")
+						}
+						.onDelete(perform: delete)
 						}
 						.listStyle(.automatic)
 
-					Button(action: {
-						showingAddAddressSheet = true
-					}, label: {
-						Image(systemName: "plus.circle.fill")
-							.font(.system(size: 40))
-					})
-					.padding()
-					.background(Color.clear)
-					.foregroundColor(.accentColor)
-					.cornerRadius(8)
-					.padding(.trailing, 10)
-					.sheet(isPresented: $showingAddAddressSheet, content: {
-						AddressAddView(addressBook: addressBook)
-					})
-					.sheet(item: $selectedRecipient) { address in
-						QRCodeView(address: address)
-					}
+
+
+						Capsule()
+						.frame(width: 350, height: 80)
+							.ignoresSafeArea(.all)
+							.foregroundColor(.clear)
+							.overlay(
+										Capsule()
+											.fill(.ultraThinMaterial)
+									)
+
+
+						Button(action: {
+							showingAddAddressSheet = true
+						}, label: {
+							Image(systemName: "plus.circle.fill")
+								.font(.system(size: 40))
+						})
+						.padding()
+						.background(Color.clear)
+						.foregroundColor(.accentColor)
+						.cornerRadius(8)
+						.padding(.trailing, 10)
+						.sheet(isPresented: $showingAddAddressSheet, content: {
+							AddressAddView(addressBook: addressBook)
+						})
+						.sheet(item: $selectedRecipient) { address in
+							QRCodeView(address: address)
+						}
 
 				}
 				.navigationBarTitle("Addresses")
-			.navigationBarItems(trailing: EditButton())
+				.navigationBarItems(trailing: EditButton())
+
 		}
 		.onAppear {
 			addressBook.loadData()
@@ -61,6 +76,10 @@ struct AddressListView: View {
 
 	func delete(at offsets: IndexSet) {
 		addressBook.deleteAddress(at: offsets)
+	}
+
+	func incrementListCounter() {
+		listElementCounter += 1
 	}
 }
 

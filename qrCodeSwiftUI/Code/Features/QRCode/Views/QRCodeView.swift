@@ -105,8 +105,11 @@ struct QRCodeView: View {
 									VStack(alignment: .center, spacing: 10){
 
 										Text("\(address.lastName) \(address.firstName)")
+											.accessibilityLabel("Name")
 										Text("\(address.address.street) \(address.address.houseNumber)")
+											.accessibilityLabel("Address")
 										Text("\(address.address.zip) Lingen")
+											.accessibilityLabel("City")
 									}
 									.fontWeight(.heavy)
 

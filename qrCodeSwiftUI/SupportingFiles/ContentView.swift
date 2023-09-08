@@ -21,7 +21,7 @@ struct ContentView: View {
 
 		Group{
 
-			if !introshown && !getIntroState() {
+			if introshown == false {
 
 				IntroView(introState: $introshown, addressBook: addressBook)
 

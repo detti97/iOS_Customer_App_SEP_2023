@@ -25,7 +25,7 @@ struct StoreListView: View {
 					.navigationTitle("Teilnehmende Geschäfte")
 					.refreshable {
 						print("reload")
-						dataManager.loadData()
+						dataManager.loadData(url: DataManager.api_endpints.storeDetail)
 							   }
 				}else{
 
@@ -34,17 +34,18 @@ struct StoreListView: View {
 							StoreDetailView(dataManager: dataManager, store: store)
 						} label: {
 							StoreRowView(store: store)
+								.accessibilityLabel(store.id)
 						}
 					}
 					.navigationTitle("Teilnehmende Geschäfte")
 					.refreshable {
 						print("reload")
-						dataManager.loadData()
+						dataManager.loadData(url: DataManager.api_endpints.storeDetail)
 							   }
 				}
 			}
 			.onAppear(perform: {
-				dataManager.loadData()
+				dataManager.loadData(url: DataManager.api_endpints.storeDetail)
 			})
 
 		}

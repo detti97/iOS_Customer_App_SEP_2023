@@ -93,7 +93,7 @@ struct StoreDetailView: View {
 		.navigationBarTitleDisplayMode(.inline)
 		.refreshable {
 			print("reload")
-			dataManager.loadData()
+			dataManager.loadData(url: DataManager.api_endpints.storeDetail)
 		}
 	}
 }
