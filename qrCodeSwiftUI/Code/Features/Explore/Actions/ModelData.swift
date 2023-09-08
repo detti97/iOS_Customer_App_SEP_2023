@@ -12,13 +12,8 @@ class DataManager: ObservableObject {
 	@Published var stores: [StoreInfo] = []
 
 	enum api_endpints {
-
 		static let storeDetail = "http://131.173.65.77:8080/api/store-details"
-
-
 	}
-
-
 
 	func decodeResponse(_ data: Data?) {
 		if let data = data {

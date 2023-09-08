@@ -1,5 +1,5 @@
 //
-//  Stores.swift
+//  StoreInfo.swift
 //  qrCodeSwiftUI
 //
 //  Created by Jan Dettler on 06.04.23.
