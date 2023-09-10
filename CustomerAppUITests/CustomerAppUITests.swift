@@ -25,7 +25,6 @@ final class CustomerAppUITests: XCTestCase {
 		let lastName = "Test"
 		let street  = "Kaiserstraße"
 		let houseNumber = "12"
-		let zip = "49809"
 
         let app = XCUIApplication()
         app.launch()
@@ -101,10 +100,6 @@ final class CustomerAppUITests: XCTestCase {
 		let firstListElement = collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["1"]/*[[".cells.buttons[\"1\"]",".buttons[\"1\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
 		firstListElement.tap()
 
-		let expectedName = "\(firstName) \(lastName)"
-		let nameField = app.textFields["Name"]
-		//XCTAssertEqual(nameField, expectedName)
-
 		let zurCkButton = app.navigationBars["_TtGC7SwiftUI19UIHosting"]/*@START_MENU_TOKEN@*/.buttons["Zurück"]/*[[".otherElements[\"Zurück\"].buttons[\"Zurück\"]",".buttons[\"Zurück\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
 		zurCkButton.tap()
 
@@ -126,6 +121,7 @@ final class CustomerAppUITests: XCTestCase {
 
 		app.tabBars["Tab Bar"].buttons["Einstellungen"].tap()
 		app.collectionViews/*@START_MENU_TOKEN@*/.buttons["Impressum"]/*[[".cells.buttons[\"Impressum\"]",".buttons[\"Impressum\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+
 
     }
 
