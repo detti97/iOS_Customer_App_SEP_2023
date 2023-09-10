@@ -7,237 +7,97 @@
 
 import SwiftUI
 
+import SwiftUI
+
+/// A SwiftUI view for guiding the user through an introductory setup process.
 struct IntroView: View {
 
+	/// A binding to control the introductory state.
 	@Binding var introState: Bool
+
+	/// The address book to manage user addresses.
 	@ObservedObject var addressBook: AddressBook
 
+	/// Flag to track the activation of the first step.
 	@State private var isActiveFirstStep = true
-	@State private var isActiveSeccondStep = false
+
+	/// Flag to track the activation of the second step.
+	@State private var isActiveSecondStep = false
+
+	/// Flag to track the activation of the third step.
 	@State private var isActiveThirdStep = false
+
+	/// Flag to track the activation of the address addition step.
 	@State private var isActiveAddAddress = false
+
+	/// Flag to track the success state of the address form.
 	@State private var success = false
 
 	var body: some View {
 
-			VStack{
-				
-				if isActiveFirstStep{
-					
-					VStack{
-						
-						Spacer()
-							.frame(height: 40)
-						
-						Image("undraw_shopping_bags_iafb")
-							.resizable()
-							.scaledToFit()
-						
-						Spacer()
-							.frame(height: 60)
-						
-						Text("Welcome to LingenLiefert 2.0")
-							.font(.largeTitle)
-							.fontWeight(.heavy)
-							.padding()
-							.multilineTextAlignment(.center)
-						
-						Spacer()
-							.frame(height: 20)
-						
-						Text("Kaufen Sie in teilnehmenden lokalen Geschäften ein und lassen Sie sich Ihre Einkäufe nach Hause liefern")
-							.font(.body)
-							.fontWeight(.heavy)
-							.padding()
-							.multilineTextAlignment(.center)
-							.foregroundColor(.purple)
-						
-						Spacer()
-							.frame(height: 100)
-						
-						Button(action: {
-							
-							isActiveFirstStep = false
-							isActiveSeccondStep = true
+		VStack {
 
-						}) {
-							Text("Next")
-								.font(.headline)
-								.padding()
-								.frame(maxWidth: .infinity)
-								.background(Color.purple)
-								.foregroundColor(.white)
-								.cornerRadius(18)
-								.padding()
-						}
+			if isActiveFirstStep {
 
-					}
-				}
+				IntroFirstStepView(isActiveFirstStep: $isActiveFirstStep, isActiveSecondStep: $isActiveSecondStep)
+			}
 
-				if isActiveSeccondStep{
+			if isActiveSecondStep {
 
-					VStack{
+				IntroSecondStepView(isActiveSecondStep: $isActiveSecondStep, isActiveAddAddress: $isActiveAddAddress)
+			}
 
-						Spacer()
-							.frame(height: 40)
+			if isActiveAddAddress {
 
-						Image("undraw_confirmed_re_sef7")
-							.resizable()
-							.scaledToFit()
+				VStack {
 
-						Spacer()
-							.frame(height: 60)
+					Image("delivery_green")
+						.resizable()
+						.frame(width: 220, height: 200)
 
-						Text("Hinterlegen Sie Ihre Adresse")
-							.font(.largeTitle)
-							.fontWeight(.heavy)
-							.padding()
-							.multilineTextAlignment(.center)
+					Text("Geben Sie hier\nIhre Adresse ein")
+						.font(.largeTitle)
+						.fontWeight(.heavy)
+						.padding()
+						.multilineTextAlignment(.center)
 
-						Spacer()
-							.frame(height: 20)
-
-						Text("Der erstellte Code wird nach Ihrem Einkauf gescannt und die Lieferung beauftragt ")
-							.font(.body)
-							.fontWeight(.heavy)
-							.padding()
-							.multilineTextAlignment(.center)
-
-						Spacer()
-							.frame(height: 100)
-
-						Button(action: {
-
-							isActiveSeccondStep = false
-							isActiveAddAddress = true
-
-						}) {
-							Text("Adresse hinzufügen")
-								.font(.headline)
-								.padding()
-								.frame(maxWidth: .infinity)
-								.background(Color.purple)
-								.foregroundColor(.white)
-								.cornerRadius(18)
-								.padding()
-
-
-						}
-
-					}
-				}
-				if isActiveAddAddress{
+					Spacer()
+						.frame(height: 10)
 
 					VStack {
-
-						Image("delivery_green")
-							.resizable()
-							.frame(width: 220, height: 200)
-
-
-
-						Text("Geben Sie hier\nIhre Adresse ein")
-							.font(.largeTitle)
-							.fontWeight(.heavy)
-							.padding()
-							.multilineTextAlignment(.center)
-
-						Spacer()
-							.frame(height: 10)
-
-						VStack{
-
-							addressFormView(addressBook: addressBook, success: $success)
-						}
-						.onChange(of: success) { newValue in
-							isActiveThirdStep = true
-							isActiveAddAddress = false
-						}
-
+						AddressFormView(addressBook: addressBook, success: $success)
 					}
-					.padding(20)
-
-				}
-
-				if isActiveThirdStep {
-
-					VStack{
-
-						Spacer()
-							.frame(height: 40)
-
-						Image("undraw_completed_03xt")
-							.resizable()
-							.scaledToFit()
-
-						Spacer()
-							.frame(height: 60)
-
-						Text("App ist bereit")
-							.font(.largeTitle)
-							.fontWeight(.heavy)
-							.padding()
-							.multilineTextAlignment(.center)
-
-						Spacer()
-							.frame(height: 20)
-
-						Text("Die Einrichtung ist fertig und Sie können nun die App benutzen")
-							.font(.body)
-							.fontWeight(.heavy)
-							.padding()
-							.multilineTextAlignment(.center)
-
-						Spacer()
-							.frame(height: 100)
-
-						Button(action: {
-
-							saveIntroState(true)
-							introState = true
-
-
-						}) {
-								Text("Next")
-									.font(.headline)
-									.padding()
-									.frame(maxWidth: .infinity)
-									.background(Color.purple)
-									.foregroundColor(.white)
-									.cornerRadius(18)
-									.padding()
-
-						}
+					.onChange(of: success) { newValue in
+						isActiveThirdStep = true
+						isActiveAddAddress = false
 					}
-
 				}
+				.padding(20)
 			}
-			.onAppear {
 
-				if getIntroState() != nil {
+			if isActiveThirdStep {
 
-					introState = getIntroState()!
-
-				}
+				IntroThirdStepView(introState: $introState)
 			}
 		}
-
-	func saveIntroState(_ introState: Bool) {
-		UserDefaults.standard.set(introState, forKey: "IntroState")
-		
+		.onAppear {
+			if getIntroState() != nil {
+				introState = getIntroState()!
+			}
+		}
 	}
 
+	/// Get the introductory state from user defaults.
+	/// - Returns: The introductory state.
 	func getIntroState() -> Bool? {
 		return UserDefaults.standard.bool(forKey: "IntroState")
 	}
 
-		struct IntroView_Previews: PreviewProvider {
-
-
-
-			static var previews: some View {
-				IntroView(introState: .constant(false), addressBook: AddressBook())
-			}
+	struct IntroView_Previews: PreviewProvider {
+		static var previews: some View {
+			IntroView(introState: .constant(false), addressBook: AddressBook())
 		}
 	}
+}
+
 

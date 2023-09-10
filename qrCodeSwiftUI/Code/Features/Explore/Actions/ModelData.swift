@@ -7,20 +7,30 @@
 
 import Foundation
 
+/// A class responsible for managing and loading store data.
 class DataManager: ObservableObject {
-	@Published var errorLoading = false
-	@Published var stores: [StoreInfo] = []
 
-	enum api_endpints {
+	/// A flag indicating whether an error occurred while loading data.
+	@Published var errorLoading = false
+
+	/// An array of ``StoreDetails``
+	@Published var stores: [StoreDetails] = []
+
+	/// Enum defining API endpoints.
+	enum api_endpoints {
+		/// The endpoint for retrieving store details.
 		static let storeDetail = "http://131.173.65.77:8080/api/store-details"
 	}
 
+	/// Decodes the response data and updates the `stores` array on success.
+	///
+	/// - Parameter data: The data received from the server that will be decoded
 	func decodeResponse(_ data: Data?) {
 		if let data = data {
 			print(data)
 			do {
 				let decoder = JSONDecoder()
-				let loadedData = try decoder.decode([StoreInfo].self, from: data)
+				let loadedData = try decoder.decode([StoreDetails].self, from: data)
 
 				DispatchQueue.main.async {
 					self.stores = loadedData
@@ -36,6 +46,9 @@ class DataManager: ObservableObject {
 		}
 	}
 
+	/// Loads data from a specified URL and handles timeouts and errors.
+	///
+	/// - Parameter url: The URL to load data from.
 	func loadData(url: String) {
 		guard let url = URL(string: url) else {
 			print("Fehler")
@@ -66,8 +79,8 @@ class DataManager: ObservableObject {
 		}
 		task.resume()
 	}
-
 }
+
 
 class AppState: ObservableObject {
 	@Published var addressEntered = false

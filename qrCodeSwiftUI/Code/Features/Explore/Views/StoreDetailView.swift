@@ -7,16 +7,23 @@
 
 import SwiftUI
 
+import SwiftUI
+
+/// A SwiftUI view for displaying store details.
 struct StoreDetailView: View {
 
+	/// The data manager responsible for loading store data.
 	@ObservedObject var dataManager: DataManager
-	var store: StoreInfo
+
+	/// The store details to display.
+	var store: StoreDetails
 
 	var body: some View {
 		ScrollView {
 			VStack {
 				Spacer().frame(height: 20)
 
+				// Display the store logo
 				AsyncImage(url: URL(string: store.logo)) { image in
 					image.resizable()
 				} placeholder: {
@@ -30,6 +37,7 @@ struct StoreDetailView: View {
 				.shadow(radius: 6)
 				.accessibility(identifier: "storeLogo")
 
+				// Display the store name
 				Text(store.name)
 					.font(.largeTitle)
 					.padding(.top)
@@ -39,6 +47,7 @@ struct StoreDetailView: View {
 
 				Spacer(minLength: 30)
 
+				// Display store information
 				HStack {
 					VStack(spacing: 4) {
 						Image(systemName: "person")
@@ -73,6 +82,7 @@ struct StoreDetailView: View {
 				Spacer(minLength: 25)
 			}
 			.background(
+				// Display the store background image
 				AsyncImage(url: URL(string: store.backgroundImage)) { image in
 					image.resizable()
 						.aspectRatio(contentMode: .fill)
@@ -83,6 +93,7 @@ struct StoreDetailView: View {
 				})
 
 			VStack {
+				// Display a map with the store's location
 				MapView(coordinate: store.locationCoordinate, storeName: store.name)
 					.ignoresSafeArea()
 					.frame(width: 400, height: 300)
@@ -92,11 +103,13 @@ struct StoreDetailView: View {
 		.navigationTitle(store.name)
 		.navigationBarTitleDisplayMode(.inline)
 		.refreshable {
+			// Refresh data when pulling down the view
 			print("reload")
-			dataManager.loadData(url: DataManager.api_endpints.storeDetail)
+			dataManager.loadData(url: DataManager.api_endpoints.storeDetail)
 		}
 	}
 }
+
 
 
 struct StoreDetail_Previews: PreviewProvider {
@@ -105,7 +118,7 @@ struct StoreDetail_Previews: PreviewProvider {
 
 			let datamanager = DataManager()
 
-			let store = StoreInfo(id: "1", name: "Apple Store", owner: "Steve Jobs", address: Address(street: "Kaiserstraße", houseNumber: "12", zip: "12345", city: ""), telephone: "0123456789", email: "test@osna.de", logo: "https://img.freepik.com/freie-ikonen/mac-os_318-10374.jpg", backgroundImage: "https://wallpapers.com/wp-content/themes/wallpapers.com/src/splash-n.jpg", coordinates: StoreInfo.Coordinates(latitude: 37.7749, longitude: -122.4194))
+			let store = StoreDetails(id: "1", name: "Apple Store", owner: "Steve Jobs", address: Address(street: "Kaiserstraße", houseNumber: "12", zip: "12345", city: ""), telephone: "0123456789", email: "test@osna.de", logo: "https://img.freepik.com/freie-ikonen/mac-os_318-10374.jpg", backgroundImage: "https://wallpapers.com/wp-content/themes/wallpapers.com/src/splash-n.jpg", coordinates: StoreDetails.Coordinates(latitude: 37.7749, longitude: -122.4194))
 
 
 			StoreDetailView(dataManager: datamanager, store: store)

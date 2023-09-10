@@ -9,26 +9,35 @@ import SwiftUI
 import CoreImage.CIFilterBuiltins
 import CoreImage
 
+/// A SwiftUI view for displaying a QR code with recipient information.
 struct QRCodeView: View {
 
+	/// The recipient's address information.
 	@State var address: Recipient
+
+	/// The secret state variable.
 	@State private var secret = 0
 
+	/// A binding to the presentation mode environment variable.
 	@Environment(\.presentationMode) private var presentationMode
 
-	let width : CGFloat = 350
-	let height : CGFloat = 500
+	/// The width of the QR code view.
+	let width: CGFloat = 350
+
+	/// The height of the QR code view.
+	let height: CGFloat = 500
 
 	var body: some View {
 
-		NavigationView{
+		NavigationView {
 
-			ZStack{
+			ZStack {
 
-				VStack{
+				VStack {
 
-					VStack{
+					VStack {
 
+						// Display a logo image
 						Image("Logo_klein")
 							.resizable()
 							.scaledToFit()
@@ -47,10 +56,9 @@ struct QRCodeView: View {
 							.frame(width: width, height: height)
 							.shadow(color: .gray, radius: 2, x: 0, y: 0)
 
+						VStack {
 
-						VStack{
-
-							HStack{
+							HStack {
 								Image(systemName: "qrcode")
 									.font(.system(size: 44))
 									.foregroundColor(.black)
@@ -62,8 +70,9 @@ struct QRCodeView: View {
 							.fontWeight(.heavy)
 							.position(x: 170, y: 40)
 
-							VStack (alignment: .trailing, spacing: 10){
+							VStack(alignment: .trailing, spacing: 10) {
 
+								// Display the QR code generated from recipient information
 								Image(uiImage: QRCodeView.generateQRCode(from: address.toStringQrString()))
 									.resizable()
 									.interpolation(.none)
@@ -87,23 +96,24 @@ struct QRCodeView: View {
 										}
 									}
 							}
-							.position(x:170, y: 30)
+							.position(x: 170, y: 30)
 
-							VStack{
+							VStack {
 
-								HStack{
+								HStack {
 									Image(systemName: "house")
 									Text("Lieferadresse")
 								}
 								.foregroundColor(.accentColor)
 								.font(.system(size: 24))
 								.fontWeight(.heavy)
-								.position(x:170, y: 50)
+								.position(x: 170, y: 50)
 
-								HStack{
+								HStack {
 
-									VStack(alignment: .center, spacing: 10){
+									VStack(alignment: .center, spacing: 10) {
 
+										// Display recipient name, address, and city
 										Text("\(address.lastName) \(address.firstName)")
 											.accessibilityLabel("Name")
 										Text("\(address.address.street) \(address.address.houseNumber)")
@@ -115,10 +125,9 @@ struct QRCodeView: View {
 
 								}
 							}
-							.position(x:170, y: 65)
+							.position(x: 170, y: 65)
 						}
 						.frame(width: width, height: height)
-
 
 					}
 					.navigationBarItems(leading: cancelButton)
@@ -144,6 +153,7 @@ struct QRCodeView: View {
 
 	}
 
+	/// A button to dismiss the view.
 	private var cancelButton: some View {
 		Button(action: {
 			presentationMode.wrappedValue.dismiss()
@@ -152,14 +162,13 @@ struct QRCodeView: View {
 		}
 	}
 
-
-
-
+	/// Generate a QR code from a given string.
+	/// - Parameter string: The input string to generate the QR code from.
+	/// - Returns: A UIImage containing the QR code.
 	static func generateQRCode(from string: String) -> UIImage {
 
 		let context = CIContext()
 		let filter = CIFilter.qrCodeGenerator()
-
 
 		filter.message = Data(string.utf8)
 
@@ -171,8 +180,9 @@ struct QRCodeView: View {
 
 		return UIImage(systemName: "xmark.circle") ?? UIImage()
 	}
-	
+
 }
+
 
 struct qrCodeView_Previews: PreviewProvider {
 	static var previews: some View {

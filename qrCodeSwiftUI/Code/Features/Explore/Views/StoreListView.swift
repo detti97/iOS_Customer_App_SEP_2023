@@ -25,7 +25,7 @@ struct StoreListView: View {
 					.navigationTitle("Teilnehmende Geschäfte")
 					.refreshable {
 						print("reload")
-						dataManager.loadData(url: DataManager.api_endpints.storeDetail)
+						dataManager.loadData(url: DataManager.api_endpoints.storeDetail)
 							   }
 				}else{
 
@@ -40,12 +40,12 @@ struct StoreListView: View {
 					.navigationTitle("Teilnehmende Geschäfte")
 					.refreshable {
 						print("reload")
-						dataManager.loadData(url: DataManager.api_endpints.storeDetail)
+						dataManager.loadData(url: DataManager.api_endpoints.storeDetail)
 							   }
 				}
 			}
 			.onAppear(perform: {
-				dataManager.loadData(url: DataManager.api_endpints.storeDetail)
+				dataManager.loadData(url: DataManager.api_endpoints.storeDetail)
 			})
 
 		}
