@@ -24,7 +24,7 @@ struct SettingsView: View {
 				VStack{
 					Form{
 
-						Section(header: Text("Adresse")) {
+						Section(header: Text("Adressbuch")) {
 							Button(action: {
 								showEditAddress = true
 							}) {
@@ -51,7 +51,7 @@ struct SettingsView: View {
 											deleteAll()
 										}
 									}),
-									secondaryButton: .cancel()
+									secondaryButton: .cancel(Text("Abbrechen"))
 								)
 							}
 							Button(action:{

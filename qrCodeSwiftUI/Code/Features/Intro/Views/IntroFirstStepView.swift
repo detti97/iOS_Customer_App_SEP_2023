@@ -26,7 +26,7 @@ struct IntroFirstStepView: View {
 			Spacer()
 				.frame(height: 60)
 
-			Text("Welcome to LingenLiefert 2.0")
+			Text("Willkommen zu LingenLiefert 2.0")
 				.font(.largeTitle)
 				.fontWeight(.heavy)
 				.padding()
@@ -51,7 +51,7 @@ struct IntroFirstStepView: View {
 				isActiveSecondStep = true
 
 			}) {
-				Text("Next")
+				Text("Weiter")
 					.font(.headline)
 					.padding()
 					.frame(maxWidth: .infinity)

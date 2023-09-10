@@ -268,7 +268,7 @@ class DataManagerTests: XCTestCase {
 		let manager = DataManager()
 		let expectation = XCTestExpectation(description: "LoadData expectation")
 
-		manager.loadData(url: DataManager.api_endpints.storeDetail)
+		manager.loadData(url: DataManager.api_endpoints.storeDetail)
 
 		DispatchQueue.main.asyncAfter(deadline: .now() + 1 ) {
 

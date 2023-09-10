@@ -50,7 +50,7 @@ struct IntroThirdStepView: View {
 
 
 			}) {
-				Text("Next")
+				Text("Weiter")
 					.font(.headline)
 					.padding()
 					.frame(maxWidth: .infinity)

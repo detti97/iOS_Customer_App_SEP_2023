@@ -58,7 +58,6 @@ struct IntroView: View {
 					Text("Geben Sie hier\nIhre Adresse ein")
 						.font(.largeTitle)
 						.fontWeight(.heavy)
-						.padding()
 						.multilineTextAlignment(.center)
 
 					Spacer()
