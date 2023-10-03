@@ -52,8 +52,7 @@ final class CustomerAppUITests: XCTestCase {
 		XCTAssert(tabBarCode.exists)
 		tabBarCode.tap()
 
-
-		let buttonAdd = app.buttons["Hinzufügen"]
+		let buttonAdd = app.buttons["Add"]
 		XCTAssertTrue(buttonAdd.exists)
 		buttonAdd.tap()
 
@@ -83,7 +82,7 @@ final class CustomerAppUITests: XCTestCase {
 		bezeichnungOptionalTextField.typeText("SEP 23")
 
 
-		let nextButton = app/*@START_MENU_TOKEN@*/.buttons["Weiter"]/*[[".keyboards",".buttons[\"Weiter\"]",".buttons[\"Next:\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[1]]@END_MENU_TOKEN@*/
+		let nextButton = app/*@START_MENU_TOKEN@*/.buttons["Next:"]/*[[".keyboards",".buttons[\"Weiter\"]",".buttons[\"Next:\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/
 		XCTAssert(nextButton.exists)
 		nextButton.tap()
 
@@ -117,7 +116,7 @@ final class CustomerAppUITests: XCTestCase {
 		XCTAssertTrue(app.staticTexts["storePhoneLabel"].exists)
 		XCTAssertTrue(app.staticTexts["storeEmailLabel"].exists)
 
-		app.navigationBars["Lingen Wirtschaft und Tourismus"].buttons["Teilnehmende Geschäfte"].tap()
+		//app.navigationBars["Lingen Wirtschaft und Tourismus"].buttons["Teilnehmende Geschäfte"].tap()
 		app.tabBars["Tab Bar"].buttons["Einstellungen"].tap()
 		app.collectionViews/*@START_MENU_TOKEN@*/.buttons["Impressum"]/*[[".cells.buttons[\"Impressum\"]",".buttons[\"Impressum\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
 
@@ -152,7 +151,7 @@ final class CustomerAppIntroUITest: XCTestCase {
 
 		Thread.sleep(forTimeInterval: 3.0)
 
-		let nextButton = app.buttons["Next"]
+		let nextButton = app.buttons["Weiter"]
 
 		if(!nextButton.exists){
 
@@ -189,18 +188,19 @@ final class CustomerAppIntroUITest: XCTestCase {
 		houseNumberField.tap()
 		houseNumberField.typeText("12")
 
-		let bezeichnungOptionalTextField = app.textFields["Bezeichnung (optional)"]
+		/*let bezeichnungOptionalTextField = app.textFields["Bezeichnung (optional)"]
 		XCTAssert(bezeichnungOptionalTextField.exists)
 		bezeichnungOptionalTextField.tap()
-		bezeichnungOptionalTextField.typeText("Mensa")
+		bezeichnungOptionalTextField.typeText("Mensa")*/
 
-		let nextButton2 = app/*@START_MENU_TOKEN@*/.buttons["Weiter"]/*[[".keyboards",".buttons[\"Weiter\"]",".buttons[\"Next:\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[1]]@END_MENU_TOKEN@*/
+
+		let nextButton2 = app.buttons["Weiter"]
 				XCTAssert(nextButton2.exists)
 				nextButton2.tap()
 
 		app.buttons["Adresse speichern"].tap()
 
-		let nextButton3 = app.buttons["Next"]
+		let nextButton3 = app.buttons["Weiter"]
 		XCTAssert(nextButton3.exists)
 		nextButton3.tap()
 
