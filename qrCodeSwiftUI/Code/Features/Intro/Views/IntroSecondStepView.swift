@@ -31,6 +31,7 @@ struct IntroSecondStepView: View {
 				.fontWeight(.heavy)
 				.padding()
 				.multilineTextAlignment(.center)
+				.foregroundColor(.accentColor)
 
 			Spacer()
 				.frame(height: 20)
@@ -54,7 +55,7 @@ struct IntroSecondStepView: View {
 					.font(.headline)
 					.padding()
 					.frame(maxWidth: .infinity)
-					.background(Color.purple)
+					.background(Color.accentColor)
 					.foregroundColor(.white)
 					.cornerRadius(18)
 					.padding()
