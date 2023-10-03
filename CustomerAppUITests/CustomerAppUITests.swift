@@ -188,17 +188,20 @@ final class CustomerAppIntroUITest: XCTestCase {
 		houseNumberField.tap()
 		houseNumberField.typeText("12")
 
-		/*let bezeichnungOptionalTextField = app.textFields["Bezeichnung (optional)"]
+		let bezeichnungOptionalTextField = app.textFields["Bezeichnung (optional)"]
 		XCTAssert(bezeichnungOptionalTextField.exists)
 		bezeichnungOptionalTextField.tap()
-		bezeichnungOptionalTextField.typeText("Mensa")*/
+		bezeichnungOptionalTextField.typeText("Mensa")
 
+		app.swipeUp()
+		app.typeText("\n")
 
-		let nextButton2 = app.buttons["Weiter"]
-				XCTAssert(nextButton2.exists)
-				nextButton2.tap()
+		let nextButton2 = app.buttons["Adresse speichern"]
 
-		app.buttons["Adresse speichern"].tap()
+		XCTAssert(nextButton2.exists)
+		nextButton2.tap()
+
+		//app.buttons["Weiter"].tap()
 
 		let nextButton3 = app.buttons["Weiter"]
 		XCTAssert(nextButton3.exists)

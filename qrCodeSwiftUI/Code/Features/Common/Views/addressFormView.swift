@@ -60,7 +60,7 @@ struct AddressFormView: View {
 					.frame(height: 30)
 					.frame(maxWidth: .infinity)
 					.padding(10)
-					.textFieldStyle(CustomTextFieldStyleView(systemImageName: "person"))
+					.textFieldStyle(CustomTextFieldStyleView(systemImageName: "person.crop.square.fill"))
 					.onTapGesture {
 						checkForEmptyField()
 						fields[0].fieldTapped = true
@@ -83,7 +83,7 @@ struct AddressFormView: View {
 					.frame(height: 30)
 					.padding(10)
 					.frame(maxWidth: .infinity)
-					.textFieldStyle(CustomTextFieldStyleView(systemImageName: "figure.fall"))
+					.textFieldStyle(CustomTextFieldStyleView(systemImageName: "person.crop.square"))
 					.onTapGesture {
 						checkForEmptyField()
 						fields[1].fieldTapped = true
@@ -135,7 +135,7 @@ struct AddressFormView: View {
 						RoundedRectangle(cornerRadius: 24)
 							.stroke(Color.gray, lineWidth: 3)
 					)
-					.textFieldStyle(CustomTextFieldStyleView(systemImageName: "figure.skiing.downhill"))
+					.textFieldStyle(CustomTextFieldStyleView(systemImageName: "numbersign"))
 					.onTapGesture {
 						checkForEmptyField()
 						fields[3].fieldTapped = true
@@ -276,5 +276,3 @@ struct FieldTapped {
 	/// A flag to indicate if text was entered in the field.
 	var textEntert: Bool = false
 }
-
-
