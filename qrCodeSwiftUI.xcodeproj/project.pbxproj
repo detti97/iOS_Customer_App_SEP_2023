@@ -73,6 +73,7 @@
 		5264A2FE2A838EBB00EE3258 /* qrCodeSwiftUNIT_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrCodeSwiftUNIT_Tests.swift; sourceTree = "<group>"; };
 		5264A3112A839E4F00EE3258 /* qrCodeSwiftUITests1.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = qrCodeSwiftUITests1.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		600B17672A5D6E2200CA28BE /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		600FE25E2ACC544A00D54A9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6035373629DA287F008C7881 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		6073C2CA2A52123D002C9CDB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		607E6A4629D8EF3700A12B32 /* qrCodeSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qrCodeSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -352,6 +353,7 @@
 		607E6A4829D8EF3700A12B32 /* qrCodeSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				600FE25E2ACC544A00D54A9D /* Info.plist */,
 				60545B5D2A9A642B00539157 /* Code */,
 				60545B602A9A656F00539157 /* Resources */,
 				60545B5E2A9A643800539157 /* SupportingFiles */,
@@ -852,6 +854,7 @@
 				DEVELOPMENT_TEAM = 28254X564U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = qrCodeSwiftUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LingenLiefert;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -886,6 +889,7 @@
 				DEVELOPMENT_TEAM = 28254X564U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = qrCodeSwiftUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LingenLiefert;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

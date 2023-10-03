@@ -120,6 +120,8 @@ final class CustomerAppUITests: XCTestCase {
 		app.navigationBars["Lingen Wirtschaft und Tourismus"].buttons["Teilnehmende Geschäfte"].tap()
 		app.tabBars["Tab Bar"].buttons["Einstellungen"].tap()
 		app.collectionViews/*@START_MENU_TOKEN@*/.buttons["Impressum"]/*[[".cells.buttons[\"Impressum\"]",".buttons[\"Impressum\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+
+
     }
 
 
