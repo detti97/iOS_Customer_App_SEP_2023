@@ -56,7 +56,7 @@ struct IntroView: View {
 						.frame(width: 220, height: 200)
 
 					Text("Geben Sie hier\nIhre Adresse ein")
-						.font(.largeTitle)
+						.font(.title)
 						.fontWeight(.heavy)
 						.multilineTextAlignment(.center)
 

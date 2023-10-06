@@ -19,7 +19,7 @@ class DataManager: ObservableObject {
 	/// Enum defining API endpoints.
 	enum api_endpoints {
 		/// The endpoint for retrieving store details.
-		static let storeDetail = "http://131.173.65.77:8080/api/store-details"
+		static let storeDetail = "http://131.173.65.77:8080/storedetails"
 	}
 
 	/// Decodes the response data and updates the `stores` array on success.
